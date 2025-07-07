@@ -1,0 +1,398 @@
+
+
+
+// .field-box {
+//   background: $white;
+//   border-radius: 0.3rem;
+//   box-shadow: 0 0.125rem 0.6rem rgba(0, 0, 0, 0.06);
+//   border: 1px solid #eee;
+//   height: 100%;
+//   display: flex;
+//   flex-direction: column;
+
+//   .field-title {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 0.75rem 1rem;
+//     border-bottom: 1px solid #ccc;
+
+//     span {
+//       font-size: 1rem;
+//       font-weight: 600;
+//     }
+
+//     .btn_setting {
+//       font-size: 0.85rem;
+//       padding: 0.25rem 0.6rem;
+//       border: 1px solid $blue;
+//       i {
+//         color: $blue;
+//       }
+//     }
+
+//     .btn_setting:hover {
+//       font-size: 0.85rem;
+//       padding: 0.25rem 0.6rem;
+//       border: 1px solid $blue;
+//       background: $blue;
+//       i {
+//         color: $white;
+//       }
+//     }
+//   }
+//   .buttonAddField-box {
+//     display: flex;
+//     justify-content: center;
+//     padding: 0.5rem 1rem 0rem 1rem;
+//     .btn-addField {
+//       color: $white;
+//       background: $blue;
+//       width: 100%;
+//     }
+//   }
+
+//   &__list {
+//     flex-grow: 1;
+//     padding: 0.75rem 1rem;
+//     overflow-y: auto;
+//     max-height: 500px;
+//   }
+
+//   .field-item {
+//     background-color: #f9f9f9;
+//     border: 1px solid #e0e0e0;
+//     border-radius: 0.3rem;
+//     padding: 0.5rem 0.75rem;
+//     margin-bottom: 0.5rem;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     transition: background 0.2s ease;
+//     .field-item__box {
+//       i {
+//         font-size: 1.3rem;
+//         color: $blue;
+//         &.cursor-move {
+//           cursor: grab;
+//         }
+//       }
+//     }
+//     &:hover {
+//       background-color: #eef6ff;
+//       cursor: pointer;
+//     }
+
+//     i {
+//       font-size: 1rem;
+//       color: $gray;
+//       &.cursor-move {
+//         cursor: grab;
+//       }
+//     }
+
+//     &__label {
+//       font-size: 0.9rem;
+//       font-weight: 500;
+//     }
+
+//     &__type {
+//       font-size: 0.75rem;
+//       color: #6c757d;
+//     }
+//     .text-icon-edit{
+//         color: $green;
+//     }
+//     .text-icon-delete{
+//         color: $red;
+//     }
+//   }
+// }
+
+@import "../../../../assets/stylecommon/color.scss";
+
+.field-box {
+  background: $white;
+  border-radius: 0.3rem;
+  box-shadow: 0 0.125rem 0.6rem rgba(0, 0, 0, 0.06);
+  border: 1px solid #eee;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+
+  .field-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #ccc;
+    flex-shrink: 0;
+
+    span {
+      font-size: 1rem;
+      font-weight: 600;
+      
+      // Responsive font size
+      @media (max-width: 768px) {
+        font-size: 0.9rem;
+      }
+    }
+
+    .btn_setting {
+      font-size: 0.85rem;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid $blue;
+      border-radius: 0.25rem;
+      background: transparent;
+      transition: all 0.2s ease;
+      
+      i {
+        color: $blue;
+      }
+
+      &:hover {
+        background: $blue;
+        i {
+          color: $white;
+        }
+      }
+
+      // Mobile responsive
+      @media (max-width: 576px) {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .buttonAddField-box {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 1rem 0rem 1rem;
+    flex-shrink: 0;
+    
+    .btn-addField {
+      color: $white;
+      background: $blue;
+      border: 1px solid $blue;
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+
+      &:hover {
+        background: darken($blue, 10%);
+        border-color: darken($blue, 10%);
+      }
+
+      // Mobile responsive
+      @media (max-width: 576px) {
+        font-size: 0.85rem;
+        padding: 0.4rem;
+      }
+    }
+  }
+
+  &__list {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    overflow-y: auto;
+    max-height: calc(100vh - 300px);
+    
+    // Mobile responsive
+    @media (max-width: 768px) {
+      max-height: 300px;
+      padding: 0.5rem;
+    }
+
+    // Custom scrollbar
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+      
+      &:hover {
+        background: #a8a8a8;
+      }
+    }
+  }
+
+  .field-item {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.3rem;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+    cursor: grab;
+    position: relative;
+
+    // Drag state
+    &.opacity-50 {
+      opacity: 0.5;
+      transform: rotate(5deg);
+    }
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    .field-item__box {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      min-width: 0; // Allow text truncation
+
+      i {
+        font-size: 1.3rem;
+        color: $blue;
+        margin-right: 0.5rem;
+        flex-shrink: 0;
+
+        // Mobile responsive
+        @media (max-width: 576px) {
+          font-size: 1.1rem;
+          margin-right: 0.4rem;
+        }
+      }
+
+      > div {
+        min-width: 0; // Allow text truncation
+        flex-grow: 1;
+      }
+    }
+
+    &:hover {
+      background-color: #eef6ff;
+      border-color: lighten($blue, 30%);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &__label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      
+      // Mobile responsive
+      @media (max-width: 576px) {
+        font-size: 0.85rem;
+      }
+    }
+
+    &__type {
+      font-size: 0.75rem;
+      color: #6c757d;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 2px;
+      
+      // Mobile responsive
+      @media (max-width: 576px) {
+        font-size: 0.7rem;
+      }
+    }
+
+    // Action buttons container
+    .d-flex.gap-2 {
+      gap: 0.5rem !important;
+      margin-left: 0.5rem;
+      flex-shrink: 0;
+
+      i {
+        font-size: 0.9rem;
+        cursor: pointer;
+        padding: 0.2rem;
+        border-radius: 0.2rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        // Mobile responsive
+        @media (max-width: 576px) {
+          font-size: 0.85rem;
+          padding: 0.25rem;
+        }
+      }
+    }
+
+    .text-icon-edit {
+      color: $green;
+      
+      &:hover {
+        color: darken($green, 15%);
+        background-color: rgba($green, 0.1);
+      }
+    }
+
+    .text-icon-delete {
+      color: $red;
+      
+      &:hover {
+        color: darken($red, 15%);
+        background-color: rgba($red, 0.1);
+      }
+    }
+
+    .text-icon-move {
+      color: $gray;
+      cursor: grab;
+      
+      &:hover {
+        color: darken($gray, 15%);
+      }
+    }
+
+    // Mobile responsive adjustments
+    @media (max-width: 576px) {
+      padding: 0.4rem 0.5rem;
+      margin-bottom: 0.4rem;
+      
+      .field-item__box i {
+        margin-right: 0.3rem;
+      }
+    }
+  }
+
+  // Mobile responsive for the entire field box
+  @media (max-width: 768px) {
+    min-height: 350px;
+    
+    .field-title {
+      padding: 0.5rem 0.75rem;
+    }
+    
+    .buttonAddField-box {
+      padding: 0.4rem 0.75rem 0 0.75rem;
+    }
+    
+    &__list {
+      padding: 0.5rem 0.75rem;
+    }
+  }
+
+  // Extra small devices
+  @media (max-width: 576px) {
+    min-height: 300px;
+    border-radius: 0.2rem;
+  }
+}

@@ -1,0 +1,169 @@
+@import '../../../assets/stylecommon/color.scss';
+// Welcome
+.greeting-search {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.welcome-total {
+  background: $white;
+  display: flex;
+  padding: 1.5rem;
+  border-radius: 15px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid #d3d8f8;
+
+  .main-welcome {
+    padding-left: 0.3rem;
+    .welcome {
+      color: $blue;
+    }
+
+    .sub-welcome {
+      color: $gray;
+    }
+  }
+  .main-status {
+    padding-right: 0.3rem;
+    .status-box {
+      background: $white;
+      border-radius: 1rem;
+      box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.06);
+      padding: 1rem;
+      border: solid 1px #dad8d8cc;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      justify-content: center;
+
+      &:hover {
+        cursor: pointer;
+        transform: translateY(-4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .icon-box {
+        padding: 0.8rem;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+          font-size: 1.2rem;
+        }
+      }
+
+      .text-box {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        .number {
+          font-weight: bold;
+          font-size: 1.1rem;
+          color: black;
+        }
+
+        .label {
+          font-size: 0.95rem;
+          color: $gray;
+        }
+      }
+
+      &.success {
+        .icon-box {
+          background-color: $background_green;
+          i {
+            color: $green;
+          }
+        }
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background: $background_green;
+        .number {
+          font-weight: bold;
+          font-size: 1.3rem;
+          color: $green;
+        }
+
+        .label {
+          font-size: 0.95rem;
+          color: $gray;
+        }
+      }
+
+      &.pending {
+        .icon-box {
+          background-color: $background_yellow;
+          i {
+            color: $yellow;
+          }
+        }
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background: $background_yellow;
+        .number {
+          font-weight: bold;
+          font-size: 1.3rem;
+          color: $yellow;
+        }
+
+        .label {
+          font-size: 0.95rem;
+          color: $gray;
+        }
+      }
+
+      &.reject {
+        .icon-box {
+          background-color: $background_red;
+          i {
+            color: $red;
+          }
+        }
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background: $background_red;
+        .number {
+          font-weight: bold;
+          font-size: 1.3rem;
+          color: $red;
+        }
+
+        .label {
+          font-size: 0.95rem;
+          color: $gray;
+        }
+      }
+
+      &.total {
+        .icon-box {
+          background-color: $background_blue;
+          i {
+            color: $blue;
+          }
+        }
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background: $background_blue;
+        .number {
+          font-weight: bold;
+          font-size: 1.3rem;
+          color: $blue;
+        }
+
+        .label {
+          font-size: 0.95rem;
+          color: $gray;
+        }
+      }
+    }
+  }
+}

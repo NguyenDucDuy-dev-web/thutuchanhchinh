@@ -1,0 +1,29 @@
+@import "../../../../assets/stylecommon/color.scss";
+
+.chart-section {
+  background: $background_color;
+  padding-left: 0.9rem;
+  padding-right: 0.9rem;
+  .line-chart-box {
+    min-height: 300px;
+    background: $white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.06);
+    padding: 1rem;
+    border: solid 1px #eee;
+  }
+
+  .pie-chart-box {
+    background: $white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.06);
+    padding: 1rem;
+    border: solid 1px #eee;
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

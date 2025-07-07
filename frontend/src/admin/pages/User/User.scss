@@ -1,0 +1,155 @@
+@import "../../../assets/stylecommon/color.scss";
+
+
+.user-section {
+  background: $background_color;
+}
+.breadcrumb-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  .title {
+    font-size: 1.6rem;
+    margin-bottom: 0;
+  }
+  .breadcrumb-sub-box {
+    padding: 0.5rem;
+    border: 1px solid #eee;
+    background: #e7e7e7;
+    border-radius: 0.3rem;
+    .breadcrumb {
+      margin-bottom: 0;
+      .breadcrumb-item {
+        a {
+          color: black;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.form-box {
+  background: $white;
+  border-radius: 0.3rem;
+  box-shadow: 0 0.125rem 0.6rem rgba(0, 0, 0, 0.06);
+  border: solid 1px #eee;
+  .form-title {
+    padding: 0.3rem;
+    span {
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.3rem;
+    }
+
+    border-bottom: 1px solid #ccc;
+  }
+
+  .form-content {
+    margin-top: 0.5rem;
+    form {
+      label {
+        padding-left: 0.6rem;
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+      .input-group {
+        padding-left: 0.6rem;
+        padding-right: 0.6rem;
+        margin-bottom: 0.8rem;
+        input {
+          border: 1px solid #ccc;
+          font-size: 0.9rem;
+          height: 90%;
+        }
+        input::placeholder {
+          font-size: 0.9rem;
+          color: $gray;
+        }
+        select {
+          font-size: 0.8rem;
+          color: $gray;
+          height: 31px;
+          option {
+            font-size: 0.8rem;
+            color: $gray;
+          }
+        }
+      }
+
+      .btn-group {
+        display: flex;
+        padding: 1rem 0.6rem 1rem 0.6rem;
+        gap: 1.3rem;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        border-top: 1px solid #ccc;
+        .btn-reset {
+          background: $white;
+          border: 2px solid $blue;
+          border-radius: 5px;
+          i {
+            font-size: 0.9rem;
+            color: $blue;
+            font-weight: 500;
+          }
+          .reset {
+            font-size: 0.9rem;
+          }
+        }
+
+        .btn-add {
+          background: $blue;
+          border: 2px solid $blue;
+          border-radius: 5px;
+          i {
+            font-size: 0.9rem;
+            color: $white;
+          }
+          .add {
+            font-size: 0.9rem;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.table-box {
+  background: $white;
+  border-radius: 0.3rem;
+  box-shadow: 0 0.125rem 0.6rem rgba(0, 0, 0, 0.06);
+  border: solid 1px #eee;
+  .table-title {
+    padding: 0.3rem;
+    border-bottom: 1px solid #ccc;
+    .title {
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.3rem;
+    }
+  }
+
+  .table-search {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.8rem 0.8rem 0.5rem 0;
+    input {
+      width: 40%;
+      height: 90%;
+      font-size: 0.9rem;
+    }
+    input::placeholder {
+      font-size: 0.9rem;
+      color: $gray;
+    }
+  }
+  .table-content {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    margin-bottom: 1rem;
+  }
+}

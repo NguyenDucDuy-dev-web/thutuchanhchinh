@@ -1,0 +1,172 @@
+// Colors:
+$background_color: #f9f9f9;
+$background_blue: #e3f2fd;
+$background_yellow: #fff3e0;
+$background_red: #ffebee;
+$background_green: #e8f5e9;
+$blue: #1e88e5;
+$yellow: #ffab00;
+$red: #f44336;
+$green: #4caf50;
+$orange: #e65100;
+$white: #ffffff;
+$gray: #8d8988;
+
+// Google Fonts:
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+// Body Fonts:
+body {
+  font-family: "Inter", sans-serif;
+}
+// Topbar Styles
+.topbar {
+  background: $background_color;
+  padding: 0.85rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid $blue;
+
+  .toggle {
+    font-size: 1.8rem;
+    border: 1px solid $blue;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    
+    i {
+      padding: 0.5rem;
+      color: $blue;
+      transition: color 0.3s ease;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: $blue;
+      border: 1px solid $white;
+      
+      i {
+        color: $white;
+      }
+    }
+  }
+
+  .notification_avt {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    
+    i {
+      font-size: 1.4rem;
+      color: $blue;
+      cursor: pointer;
+      padding: 0.3rem;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba($blue, 0.1);
+        transform: scale(1.1);
+      }
+    }
+
+    .avt-wrapper {
+      height: 2.5rem;
+      width: 2.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: $blue;
+        transform: scale(1.05);
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  // Tablet responsive
+  @media (max-width: 1024px) and (min-width: 769px) {
+    padding: 0.8rem;
+
+    .toggle {
+      font-size: 1.6rem;
+      
+      i {
+        padding: 0.4rem;
+      }
+    }
+
+    .notification_avt {
+      gap: 0.7rem;
+      
+      i {
+        font-size: 1.3rem;
+      }
+
+      .avt-wrapper {
+        height: 2.3rem;
+        width: 2.3rem;
+      }
+    }
+  }
+
+  // Mobile responsive
+  @media (max-width: 768px) {
+    padding: 0.7rem;
+
+    .toggle {
+      font-size: 1.5rem;
+      
+      i {
+        padding: 0.4rem;
+      }
+    }
+
+    .notification_avt {
+      gap: 0.6rem;
+      
+      i {
+        font-size: 1.2rem;
+      }
+
+      .avt-wrapper {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+  }
+
+  // Small mobile
+  @media (max-width: 480px) {
+    padding: 0.6rem;
+
+    .toggle {
+      font-size: 1.3rem;
+      
+      i {
+        padding: 0.3rem;
+      }
+    }
+
+    .notification_avt {
+      gap: 0.5rem;
+      
+      i {
+        font-size: 1.1rem;
+      }
+
+      .avt-wrapper {
+        height: 1.8rem;
+        width: 1.8rem;
+      }
+    }
+  }
+}

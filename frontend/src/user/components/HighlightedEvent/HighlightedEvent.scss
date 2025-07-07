@@ -1,0 +1,427 @@
+@import "../../../assets/stylecommon/color.scss";
+
+// CSS cho Event Slider
+.highlighted-event-section {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  
+  .custom-container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+
+    .event-slider {
+      .swiper-slide {
+        height: auto;
+        overflow: hidden;
+        border-radius: 1rem;
+      }
+    }
+
+    .swiper {
+      height: 410px;
+
+      // Tablet responsive
+      @media (min-width: 769px) and (max-width: 1199px) {
+        height: 450px;
+      }
+
+      @media (max-width: 768px) {
+        height: auto;
+        min-height: 400px;
+      }
+
+      @media (max-width: 576px) {
+        min-height: 350px;
+      }
+    }
+
+    .highlighted-event {
+      height: 100%;
+      padding-left: 7.5rem;
+      padding-right: 7rem;
+      
+      .event-info-wrapper {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      // Desktop layout styles
+      h5 {
+        font-size: 2.2rem;
+        color: $dark;
+        margin-top: 4rem;
+      }
+
+      .content-popular {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: $gray;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        margin-top: 1.2rem;
+        min-height: calc(1.8rem * 4);
+      }
+      
+      .btn-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        width: 70%;
+        max-width: 100%;
+
+        .button_xemchitiet,
+        .button_thuchien {
+          flex: 1;
+          min-width: 100px;
+          text-align: center;
+        }
+        
+        .button_xemchitiet {
+          border-radius: 0.5rem;
+          background-color: $white;
+          color: #134067;
+          border: 1px solid $blue;
+          padding: 0.5rem 1rem;
+          font-weight: 500;
+          font-size: 1rem;
+
+          &:hover {
+            background-color: $background_color;
+          }
+        }
+
+        .button_thuchien {
+          border-radius: 0.5rem;
+          background-color: $blue;
+          color: $white;
+          padding: 0.5rem 1rem;
+          border: none;
+          font-weight: 500;
+          font-size: 1rem;
+
+          &:hover {
+            background-color: $white;
+            color: $blue;
+          }
+        }
+      }
+
+      .event-image {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          border-radius: 0.75rem;
+          padding-left: 2.5rem;
+
+          &.event-img {
+            @media (min-width: 1200px) {
+              min-height: 350px;
+              max-height: 380px;
+            }
+          }
+        }
+      }
+
+      // Tablet and Mobile Layout
+      .tablet-mobile-layout {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 1rem;
+        text-align: center;
+
+        .event-content-center {
+          max-width: 600px;
+          width: 100%;
+          padding: 1rem;
+          
+          h5 {
+            font-size: 1.8rem;
+            color: $dark;
+            margin-bottom: 1rem;
+            margin-top: 0;
+
+            
+            @media (max-width: 768px) {
+              font-size: 1.5rem;
+              
+            }
+
+            @media (max-width: 576px) {
+              font-size: 1.3rem;
+            }
+          }
+
+          .content-popular {
+            font-size: 1.2rem;
+            line-height: 1.6rem;
+            color: $gray;
+            margin-bottom: 2rem;
+            display: block;
+            -webkit-line-clamp: unset;
+            overflow: visible;
+            min-height: auto;
+
+            @media (max-width: 768px) {
+              font-size: 1.1rem;
+              margin-bottom: 1.5rem;
+            }
+
+            @media (max-width: 576px) {
+              font-size: 1rem;
+              margin-bottom: 1rem;
+            }
+          }
+
+          .event-image-center {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+
+            @media (max-width: 768px) {
+              margin-top: 1.5rem;
+            }
+
+            .event-img-tablet {
+              max-width: 300px;
+              height: auto;
+              object-fit: contain;
+              border-radius: 0.75rem;
+              max-height: 200px;
+
+              @media (max-width: 768px) {
+                max-width: 250px;
+              }
+
+              @media (max-width: 576px) {
+                max-width: 300px;
+              }
+            }
+          }
+
+          .btn-group-center {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 1rem;
+
+            @media (max-width: 576px) {
+              flex-direction: column;
+              gap: 0.5rem;
+            }
+
+            .button_xemchitiet,
+            .button_thuchien {
+              flex: 1;
+              min-width: 120px;
+              text-align: center;
+              padding: 0.6rem 1.2rem;
+              font-size: 1rem;
+              margin-top: 0.5rem;
+
+              @media (max-width: 576px) {
+                width: 100%;
+                min-width: auto;
+              }
+            }
+
+            .button_xemchitiet {
+              border-radius: 0.5rem;
+              background-color: $white;
+              color: #134067;
+              border: 1px solid $blue;
+              font-weight: 500;
+
+              &:hover {
+                background-color: $background_color;
+              }
+            }
+
+            .button_thuchien {
+              border-radius: 0.5rem;
+              background-color: $blue;
+              color: $white;
+              border: none;
+              font-weight: 500;
+
+              &:hover {
+                background-color: $white;
+                color: $blue;
+              }
+            }
+          }
+        }
+      }
+
+      // Tablet responsive for desktop layout (only when showing desktop layout)
+      @media (min-width: 1200px) {
+        .tablet-mobile-layout {
+          display: none;
+        }
+      }
+
+      // Hide desktop layout on tablet and mobile
+      @media (max-width: 1199px) {
+        padding: 0;
+        
+        .tablet-mobile-layout {
+          display: flex;
+        }
+      }
+
+      @media (min-width: 576px) and (max-width: 768px) {
+        .tablet-mobile-layout {
+          padding: 1.5rem 1rem;
+        }
+      }
+
+      @media (max-width: 575px) {
+        .tablet-mobile-layout {
+          padding: 1rem 0.5rem;
+        }
+      }
+    }
+
+    .event-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+      margin-top: 1rem;
+
+      .event-tab {
+        flex: 1 1 300px;
+        max-width: 360px;
+        min-height: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+        color: $gray;
+        border-left: 1px solid #ccc;
+
+        &:first-child {
+          border-left: none; 
+        }
+
+        h6 {
+          font-size: 1.3rem;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          line-height: 1.5rem;
+          min-height: calc(1.5rem * 1);
+          width: 100%;
+          color: $dark;
+        }
+        
+        p {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          line-height: 1.2rem;
+          min-height: calc(1.2rem * 2);
+          width: 100%;
+          margin-top: 0.2rem;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &.active {
+          h6, p{
+            color: $blue;
+          }
+        }
+      }
+    }
+
+    .slider-navigation {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      pointer-events: none;
+      display: none; // Ẩn hoàn toàn navigation buttons
+
+      .swiper-button-prev-custom,
+      .swiper-button-next-custom {
+        display: none; // Ẩn navigation buttons
+      }
+    }
+
+    .swiper-pagination-custom {
+      text-align: center;
+      margin-top: 20px;
+      display: none; 
+
+      // Hiển thị trên tablet và mobile
+      @media (max-width: 1199px) {
+        display: block;
+      }
+
+      .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background-color: #ccc;
+        border-radius: 50%;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+
+        &.swiper-pagination-bullet-active {
+          background-color: $blue;
+          transform: scale(1.2);
+        }
+      }
+
+      // Tablet responsive
+      @media (min-width: 769px) and (max-width: 1199px) {
+        margin-top: 25px;
+        
+        .swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          margin: 0 6px;
+        }
+      }
+    }
+
+    // Ẩn tabs trên tablet và mobile, hiện navigation và pagination
+    @media (max-width: 1199px) {
+      .event-tabs {
+        display: none !important;
+      }
+    }
+  }
+}

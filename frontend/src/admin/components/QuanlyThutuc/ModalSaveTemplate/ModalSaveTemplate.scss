@@ -1,0 +1,13 @@
+@import "../../../../assets/stylecommon/color.scss";
+
+.form-control.is-invalid {
+    border-radius: 5px !important;
+}
+.invalid-feedback{
+    margin-bottom: 0;
+    font-size: 0.85rem;
+}
+.addloading{
+    font-size: 0.9rem;
+    color:$white;
+}

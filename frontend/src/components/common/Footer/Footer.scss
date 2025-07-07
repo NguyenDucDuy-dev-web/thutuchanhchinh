@@ -1,0 +1,54 @@
+@import '../../../assets/stylecommon/color.scss';
+
+// Footer:
+footer {
+  margin-top: 1rem;
+  background: linear-gradient(135deg, #1e88e5 0%, #1976d2 100%);
+
+  .footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+    font-size: 0.875rem;
+    color: $white;
+    flex-wrap: wrap;
+
+    p {
+      margin: 0;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.875rem;
+
+      i {
+        font-size: 1rem;
+        color: $white;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #ccc;
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    height: 1.5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .footer-main {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+
+      .social-icons {
+        align-self: flex-start;
+      }
+    }
+  }
+}

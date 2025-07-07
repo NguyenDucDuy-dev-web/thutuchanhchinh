@@ -1,0 +1,704 @@
+  @import "../../../assets/stylecommon/color.scss";
+
+  // Header chính
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: "Roboto", sans-serif;
+    padding: 1rem;
+    transition: all 0.3s ease-in-out;
+
+    &.scrolled {
+      padding: 0rem;
+      background-color: $white;
+      box-shadow: 0 2px 8px rgba(0, 115, 255, 0.3);
+      .custom-navbar {
+        .custom-container {
+          padding-left: 2rem;
+          padding-right: 2rem;
+          @media (max-width: 1199.98px) {
+            padding-left: 2rem;
+            padding-right: 2rem;
+          }
+
+          @media (max-width: 991.98px) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
+
+          @media (max-width: 767.98px) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            .setting-icon {
+              padding: 0;
+            }
+          }
+
+          @media (max-width: 575.98px) {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+            .setting-icon {
+              padding: 0;
+            }
+          }
+        }
+        .logo-brand {
+          img {
+            width: 45px;
+            height: 45px;
+          }
+        }
+      }
+    }
+
+    .custom-navbar {
+      background: none;
+      min-height: 70px;
+
+      @media (max-width: 1199.98px) {
+        padding: 0;
+      }
+
+      .custom-container {
+        max-width: 1400px;
+        width: 100%;
+        padding-left: 3rem;
+        padding-right: 3rem;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media (max-width: 991.98px) {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        // Mobile specific adjustments
+        @media (max-width: 767.98px) {
+          justify-content: space-between;
+
+          .left-section {
+            flex: 0 0 auto;
+          }
+
+          .right-section {
+            flex: 0 0 auto;
+          }
+        }
+      }
+
+      // Left Section - Logo & Hamburger
+      .left-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-self: start;
+
+        @media (max-width: 767.98px) {
+          gap: 0.75rem;
+          flex: 1;
+          justify-content: flex-start;
+        }
+
+        .sidebar-toggle {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 32px;
+          height: 32px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          padding: 4px;
+          z-index: 10;
+          transition: all 0.3s ease;
+          order: -1;
+
+          @media (max-width: 767.98px) {
+            width: 28px;
+            height: 28px;
+          }
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+          }
+
+          span {
+            width: 24px;
+            height: 3px;
+            background: $dark;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: 1px;
+
+            @media (max-width: 767.98px) {
+              width: 20px;
+              height: 2.5px;
+            }
+
+            &:first-child {
+              transform: rotate(0);
+            }
+
+            &:nth-child(2) {
+              opacity: 1;
+              transform: translateX(0);
+            }
+
+            &:nth-child(3) {
+              transform: rotate(0);
+            }
+          }
+
+          &.open {
+            span {
+              &:first-child {
+                transform: rotate(45deg);
+              }
+
+              &:nth-child(2) {
+                opacity: 0;
+                transform: translateX(20px);
+              }
+
+              &:nth-child(3) {
+                transform: rotate(-45deg);
+              }
+            }
+          }
+        }
+      }
+
+      // Right Section - User Controls
+      .right-section {
+        justify-self: end;
+
+        @media (max-width: 767.98px) {
+          flex: 0 0 auto;
+        }
+      }
+
+      // Logo
+      .logo-brand {
+        color: $white !important;
+        font-weight: 700;
+        font-size: 1.4rem;
+        letter-spacing: 0.5px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        flex-shrink: 0;
+
+        @media (max-width: 767.98px) {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 1.1rem;
+        }
+
+        &:hover {
+          color: $white !important;
+          text-decoration: none;
+        }
+
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-right: 0.75rem;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+
+          @media (max-width: 767.98px) {
+            width: 35px;
+            height: 35px;
+            margin-right: 0.5rem;
+          }
+        }
+
+        .logo-text-full,
+        .logo-text-short {
+          color: $dark !important;
+          font-weight: 700;
+          white-space: nowrap;
+        }
+
+        .logo-text-full {
+          font-size: 1.3rem;
+
+          @media (max-width: 768px) {
+            font-size: 1.1rem;
+          }
+        }
+
+        .logo-text-short {
+          font-size: 1.1rem;
+          font-weight: 800;
+          letter-spacing: 1px;
+        }
+      }
+
+      // Navbar menu (Desktop only)
+      .navbar-collapse {
+        justify-self: center;
+
+        .navbar-nav {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin: 0;
+        }
+      }
+
+      .nav-link {
+        position: relative;
+        color: $dark !important;
+        font-size: 1rem;
+        padding: 0.75rem 1.2rem !important;
+        margin: 0 0.2rem;
+        transition: all 0.3s ease;
+        border-radius: 25px;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        text-decoration: none;
+        white-space: nowrap;
+
+        .nav-text {
+          position: relative;
+          display: inline-block;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 2px;
+            width: 0;
+            height: 6px;
+            background: $blue;
+            border-radius: 3px;
+            transition: all 0.2s ease-in-out;
+          }
+        }
+
+        &:hover .nav-text::after,
+        &.active .nav-text::after {
+          width: 60%;
+        }
+      }
+
+      // User section - Desktop
+      .user-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-shrink: 0;
+        justify-self: end;
+        background: none;
+
+        .notification-icon {
+          position: relative;
+          cursor: pointer;
+
+          i {
+            color: $dark;
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+
+            &:hover {
+              color: $yellow;
+              transform: scale(1.1);
+            }
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0.3rem;
+            right: 0.3rem;
+            width: 8px;
+            height: 8px;
+            background: #ff4444;
+            border-radius: 50%;
+            border: 2px solid white;
+          }
+        }
+
+        .user-info {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          background: $blue;
+          padding: 0.4rem 0.6rem;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+          }
+
+          .user-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+          }
+
+          .username {
+            color: $white;
+            font-weight: 600;
+            font-size: 1rem;
+            white-space: nowrap;
+          }
+
+          i {
+            font-size: 0.9rem;
+            color: $white;
+            justify-content: center;
+            margin-top: 2px;
+          }
+        }
+
+        .setting-icon {
+          border-left: 1px solid $gray;
+          padding: 0.6rem 0rem 0.6rem 1rem;
+          i {
+            font-size: 1.3rem;
+            color: $gray;
+          }
+
+          @media (max-width: 767.98px) {
+            padding: 0;
+          }
+
+          @media (max-width: 575.98px) {
+            padding: 0;
+          }
+        }
+      }
+
+      // User section - Tablet
+      .user-section-tablet {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+
+        .notification-icon {
+          position: relative;
+          cursor: pointer;
+
+          i {
+            color: $dark;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            padding: 0.4rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.4rem;
+
+            &:hover {
+              color: $yellow;
+              transform: scale(1.1);
+            }
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0.2rem;
+            right: 0.2rem;
+            width: 6px;
+            height: 6px;
+            background: #ff4444;
+            border-radius: 50%;
+            border: 1px solid white;
+          }
+        }
+
+        .user-info {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: $blue;
+          padding: 0.3rem 0.5rem;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+          }
+
+          .user-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+          }
+
+          .username {
+            color: $white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+          }
+
+          i {
+            font-size: 0.8rem;
+            color: $white;
+          }
+        }
+
+        .setting-icon {
+          border-left: 1px solid $gray;
+          padding: 0.5rem 0rem 0.5rem 0.75rem;
+          i {
+            font-size: 1.2rem;
+            color: $gray;
+          }
+        }
+      }
+
+      // User section - Mobile (Only Settings)
+      .user-section-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .setting-icon {
+          cursor: pointer;
+          padding: 0.5rem;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.1);
+          }
+
+          i {
+            font-size: 1.3rem;
+            color: $dark;
+            transition: all 0.3s ease;
+
+            &:hover {
+              color: $blue;
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Sidebar Overlay
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1098;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  // Sidebar Menu
+  .sidebar-menu {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 320px;
+    height: 100%;
+    background: $white;
+    z-index: 1099;
+    transition: all 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 767.98px) {
+      width: 280px;
+      left: -280px;
+    }
+
+    &.open {
+      left: 0;
+    }
+
+    // Sidebar Header
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem;
+      border-bottom: 1px solid #eee;
+      background: $blue;
+
+      @media (max-width: 767.98px) {
+        padding: 1.2rem;
+      }
+
+      .sidebar-logo {
+        display: flex;
+        align-items: center;
+        color: $white;
+        font-weight: 700;
+        font-size: 1.2rem;
+
+        @media (max-width: 767.98px) {
+          font-size: 1.1rem;
+        }
+
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-right: 0.75rem;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+
+          @media (max-width: 767.98px) {
+            width: 35px;
+            height: 35px;
+            margin-right: 0.6rem;
+          }
+        }
+      }
+
+      .sidebar-close {
+        background: none;
+        border: none;
+        color: $white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+
+        @media (max-width: 767.98px) {
+          font-size: 1.3rem;
+          padding: 0.4rem;
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+
+    // Sidebar Navigation
+    .sidebar-nav {
+      flex: 1;
+      padding: 2rem 0;
+
+      @media (max-width: 767.98px) {
+        padding: 1.5rem 0;
+      }
+
+      .sidebar-nav-link {
+        display: block;
+        padding: 1rem 2rem;
+        color: $dark;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+
+        @media (max-width: 767.98px) {
+          padding: 0.9rem 1.5rem;
+          font-size: 0.95rem;
+        }
+
+        &:hover {
+          background: rgba(0, 115, 255, 0.1);
+          color: $blue;
+          text-decoration: none;
+        }
+
+        &.active {
+          background: rgba(0, 115, 255, 0.1);
+          color: $blue;
+          border-left-color: $blue;
+        }
+      }
+    }
+
+    // Sidebar Footer
+    .sidebar-footer {
+      padding: 1.5rem;
+      border-top: 1px solid #eee;
+
+      @media (max-width: 767.98px) {
+        padding: 1.2rem;
+      }
+
+      .sidebar-user {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        @media (max-width: 767.98px) {
+          gap: 0.8rem;
+        }
+
+        .sidebar-user-avatar {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 2px solid $blue;
+
+          @media (max-width: 767.98px) {
+            width: 45px;
+            height: 45px;
+          }
+        }
+
+        .sidebar-user-info {
+          flex: 1;
+
+          .sidebar-username {
+            display: block;
+            font-weight: 600;
+            color: $dark;
+            font-size: 1rem;
+
+            @media (max-width: 767.98px) {
+              font-size: 0.95rem;
+            }
+          }
+
+          .sidebar-user-role {
+            display: block;
+            color: $gray;
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+
+            @media (max-width: 767.98px) {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Hide default Bootstrap navbar toggle
+  .navbar-toggler {
+    display: none !important;
+  }
