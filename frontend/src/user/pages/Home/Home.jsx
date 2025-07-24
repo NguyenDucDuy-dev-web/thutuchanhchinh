@@ -10,17 +10,13 @@ import Toturial from "../../components/Toturial/Toturial";
 const Home = () => {
   return (
     <>
-      {/* <Welcome /> */}
-
       <HighlightedEvent />
 
       <YourOption />
 
-      {/* <QuickAcess/> */}
-
       <News/>
       
-      {/* <Toturial/> */}
+      <Toturial/>
      
     </>
   );

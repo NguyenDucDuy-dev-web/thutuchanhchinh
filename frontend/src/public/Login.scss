@@ -1,4 +1,4 @@
-@import '../assets/stylecommon/color.scss';
+@import "../assets/stylecommon/color.scss";
 
 // Login Page:
 .login-page {
@@ -7,6 +7,7 @@
   overflow: hidden;
   display: flex;
   align-items: center;
+  font-family: "Roboto", sans-serif;
 
   .login-left {
     flex: 1;
@@ -107,12 +108,13 @@
 
         .captcha-group {
           display: flex;
-          gap: 0.625rem; // cách giữa ô nhập và captcha box
+          gap: 0.625rem;
           align-items: center;
           margin-top: 0.5rem;
 
           input {
             flex: 1;
+            min-width: 0; // Cho phép input co lại khi cần
             padding: 0.625rem 0.75rem;
             border: 1px solid #eeee;
             border-radius: 0.375rem;
@@ -127,13 +129,17 @@
           .captcha-box {
             display: flex;
             align-items: center;
-            padding: 0 0.5rem;
+            padding: 0.25rem 0.5rem;
             border: 1px solid #eeee;
             border-radius: 0.375rem;
             background: #fff;
+            flex-shrink: 0; // Không cho phép captcha box co lại
+            min-width: 120px; // Đặt chiều rộng tối thiểu
+            max-width: 140px; // Giới hạn chiều rộng tối đa
 
             img {
-              height: 2.25rem;
+              height: 2rem; // Giảm chiều cao từ 2.25rem xuống 2rem
+              max-width: 80px; // Giới hạn chiều rộng hình ảnh
               object-fit: contain;
               display: block;
               margin-right: 0.5rem;
@@ -143,9 +149,13 @@
               cursor: pointer;
               background: none;
               border: none;
-              font-size: 1.125rem;
+              font-size: 1rem; // Giảm kích thước icon
               color: #666;
-              padding: 0;
+              padding: 0.125rem;
+              flex-shrink: 0;
+              &:hover {
+                color: $blue;
+              }
             }
           }
         }
@@ -164,6 +174,285 @@
 
           &:hover {
             background: #094fe6;
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive Design
+  // Tablet (768px - 1024px)
+  @media (max-width: 1024px) and (min-width: 769px) {
+    position: relative;
+    background-image: url("../assets/images/anhlogin.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    // Thêm overlay để tạo hiệu ứng mờ
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .login-wrapper {
+      position: relative;
+      z-index: 2;
+    }
+
+    .login-left {
+      display: none; // Ẩn cột hình ảnh
+    }
+
+    .login-right {
+      width: 100%;
+      padding: 2rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+
+      .login-box {
+        max-width: 600px;
+        width: 100%;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 1rem;
+        box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
+
+        .login-header {
+          margin-bottom: 1.5rem;
+
+          h3 {
+            font-size: 1.125rem;
+          }
+
+          span {
+            font-size: 0.9375rem;
+          }
+
+          .logo {
+            height: 3.5rem;
+          }
+
+          h2 {
+            font-size: 1.25rem;
+          }
+        }
+
+        form {
+          .captcha-group {
+            .captcha-box {
+              min-width: 100px;
+              max-width: 120px;
+              padding: 0.3rem 0.375rem;
+
+              img {
+                height: 1.9rem;
+                max-width: 70px;
+              }
+
+              .refresh-captcha {
+                font-size: 0.95rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Tablet và Mobile - Overlay style
+  @media (max-width: 768px) {
+    position: relative;
+    background-image: url("../assets/images/anhlogin.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    // Thêm overlay để tạo hiệu ứng mờ
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .login-wrapper {
+      position: relative;
+      z-index: 2;
+    }
+
+    .login-left {
+      display: none; // Ẩn cột hình ảnh
+    }
+
+    .login-right {
+      width: 100%;
+      padding: 2rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+
+      .login-box {
+        max-width: 400px;
+        width: 100%;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 1rem;
+        box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
+
+        .login-header {
+          margin-bottom: 1.5rem;
+
+          h3 {
+            font-size: 1.125rem;
+          }
+
+          span {
+            font-size: 0.9375rem;
+          }
+
+          .logo {
+            height: 3.5rem;
+          }
+
+          h2 {
+            font-size: 1.25rem;
+          }
+        }
+
+        form {
+          .captcha-group {
+            .captcha-box {
+              min-width: 100px;
+              max-width: 120px;
+              padding: 0.3rem 0.375rem;
+
+              img {
+                height: 1.875rem;
+                max-width: 70px;
+              }
+
+              .refresh-captcha {
+                font-size: 0.9375rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Mobile (≤480px)
+  @media (max-width: 480px) {
+    .login-right {
+      padding: 1.5rem 3rem;
+
+      .login-box {
+        max-width: 100%;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.97);
+
+        .login-header {
+          margin-bottom: 1.25rem;
+
+          h3 {
+            font-size: 1rem;
+          }
+
+          span {
+            font-size: 0.875rem;
+          }
+
+          .logo {
+            height: 3rem;
+          }
+
+          h2 {
+            font-size: 1.125rem;
+          }
+        }
+
+        form {
+          label {
+            font-size: 0.875rem;
+          }
+
+          .input-group input {
+            padding: 0.5rem 0.625rem;
+            font-size: 0.8125rem;
+          }
+
+          .captcha-group {
+            gap: 0.5rem;
+
+            input {
+              padding: 0.5rem 0.625rem;
+              font-size: 0.8125rem;
+            }
+
+            .captcha-box {
+              min-width: 90px;
+              max-width: 110px;
+              padding: 0.125rem 0.25rem;
+
+              img {
+                height: 1.75rem;
+                max-width: 65px;
+              }
+
+              .refresh-captcha {
+                font-size: 0.875rem;
+              }
+            }
+          }
+
+          .login-button {
+            padding: 0.625rem;
+            font-size: 0.9375rem;
+          }
+        }
+      }
+    }
+  }
+
+  // Mobile rất nhỏ (≤320px)
+  @media (max-width: 320px) {
+    .login-right {
+      padding: 1rem 0.75rem;
+
+      .login-box {
+        padding: 1.25rem;
+
+        form {
+          .captcha-group {
+            .captcha-box {
+              min-width: 80px;
+              max-width: 95px;
+
+              img {
+                height: 1.5rem;
+                max-width: 55px;
+              }
+
+              .refresh-captcha {
+                font-size: 0.8125rem;
+              }
+            }
           }
         }
       }

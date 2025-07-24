@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Document, Page, pdfjs } from "react-pdf";
 import "./ModalPreviewProcedure.scss";
@@ -6,25 +6,23 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import DroppablePage from "./DroppablePage";
 
-
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "../../../../../node_modules/react-pdf/node_modules/pdfjs-dist/build/pdf.worker.min.mjs",
   import.meta.url
 ).toString();
-
-
 
 const ModalPreviewBlodProcedure = ({
   show,
   onHide,
   pdfBlobUrl,
   placedFields,
-  numPages,
+  // numPages,
 }) => {
-  const handleClearSelection = () => {}; 
+  const handleClearSelection = () => {};
   const handleFieldSelect = () => {};
   const handleFieldDelete = () => {};
   const handleFieldDropped = () => {};
+  const [numPages, setNumPages] = useState(1);
 
   return (
     <Modal
@@ -40,12 +38,17 @@ const ModalPreviewBlodProcedure = ({
       <Modal.Body className="preview-body">
         {pdfBlobUrl ? (
           <div className="pdf-preview-container" onClick={handleClearSelection}>
-            <Document file={pdfBlobUrl} className="pdf-document">
+            <Document
+              file={pdfBlobUrl}
+              className="pdf-document"
+              onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+            >
               {Array.from(new Array(numPages), (_, index) => {
                 const pageNum = index + 1;
                 const fieldsOnPage = placedFields.filter(
-                  (f) => f.page === pageNum
+                  (f) => Number(f.page) === pageNum
                 );
+                console.log("numPages", numPages);
                 return (
                   <div
                     key={`page-wrapper-${pageNum}`}

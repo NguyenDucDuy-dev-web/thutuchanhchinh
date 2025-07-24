@@ -88,7 +88,7 @@ const Header = () => {
                   <span className="nav-text">Trang chủ</span>
                 </NavLink>
                 <NavLink
-                  to="/thutuc"
+                  to="/procedure"
                   className={({ isActive }) =>
                     `nav-link ${isActive ? "active" : ""}`
                   }

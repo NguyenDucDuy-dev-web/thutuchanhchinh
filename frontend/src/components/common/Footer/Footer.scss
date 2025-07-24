@@ -1,54 +1,372 @@
-@import '../../../assets/stylecommon/color.scss';
+// Footer.scss
+@import "../../../assets/stylecommon/color.scss";
 
-// Footer:
-footer {
-  margin-top: 1rem;
-  background: linear-gradient(135deg, #1e88e5 0%, #1976d2 100%);
-
-  .footer-main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1.3rem;
-    padding-bottom: 1.3rem;
-    font-size: 0.875rem;
-    color: $white;
-    flex-wrap: wrap;
-
-    p {
-      margin: 0;
+.footer {
+  background-color: #f8fafc;
+  padding: 3rem 0;
+  border-top: 1px solid #e2e8f0;
+  font-family: "Roboto", sans-serif;
+  
+  .custom-container {
+    max-width: 1400px;
+    width: 100%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin: 0 auto;
+    
+    // Breakpoints đồng bộ với header
+    @media (max-width: 1199.98px) {
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
 
-    .social-icons {
+    @media (max-width: 991.98px) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    @media (max-width: 575.98px) {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+    gap: 3rem;
+    
+    // Tablet
+    @media (max-width: 991.98px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    
+    // Mobile và iPad Mini - 768px
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+  
+  // Logo và thông tin 
+  .footer-brand {
+    @media (max-width: 991.98px) {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .logo {
       display: flex;
-      gap: 0.875rem;
-
-      i {
-        font-size: 1rem;
-        color: $white;
-        cursor: pointer;
-        transition: color 0.3s ease;
-
-        &:hover {
-          color: #ccc;
+      align-items: center;
+      margin-bottom: 1rem;
+      
+      @media (max-width: 991.98px) {
+        justify-content: center;
+      }
+      
+      @media (max-width: 768px) {
+        justify-content: center;
+      }
+      
+      .logo-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0.75rem;
+        
+        .logo-image {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          border-radius: 50%;
+        }
+      }
+      
+      .brand-name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: $dark;
+      }
+    }
+    
+    .brand-description {
+      color: #64748b;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      
+      @media (max-width: 991.98px) {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    
+    .copyright {
+      color: #94a3b8;
+      font-size: 0.75rem;
+    }
+  }
+  
+  // Các cột menu
+  .footer-column {
+    .column-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #0d47a1;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      
+      // Desktop: không hiển thị icon
+      .mobile-toggle {
+        display: none;
+      }
+      
+      // Mobile và iPad Mini
+      @media (max-width: 768px) {
+        padding: 1rem 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        margin-bottom: 0;
+        
+        .mobile-toggle {
+          display: block;
+          font-size: 1rem;
+          color: $blue;
+          transition: transform 0.3s ease;
+        }
+      }
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      // Desktop: hiển thị bình thường
+      @media (min-width: 769px) {
+        display: block !important;
+      }
+      
+      // Mobile và iPad Mini: ẩn/hiện theo accordion
+      @media (max-width: 768px) {
+        display: none;
+        padding: 1rem 1.2rem;
+        
+        &.expanded {
+          display: block;
+        }
+      }
+      
+      li {
+        margin-bottom: 0.75rem;
+        
+        @media (max-width: 768px) {
+          margin-bottom: 1rem;
+        }
+        
+        a {
+          color: #64748b;
+          text-decoration: none;
+          font-size: 0.875rem;
+          transition: color 0.2s ease;
+          
+          &:hover {
+            color: $blue;
+          }
+          
+          @media (max-width: 768px) {
+            font-size: 1rem;
+          }
         }
       }
     }
   }
-
+  
+  // Footer bottom - Social và Language (Desktop: cột thứ 5)
   .footer-bottom {
-    height: 1.5rem;
-  }
-
-  @media screen and (max-width: 768px) {
-    .footer-main {
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    
+    // Desktop: cột thứ 5
+    @media (min-width: 992px) {
       align-items: flex-start;
-      gap: 0.75rem;
+      gap: 2rem;
+    }
+    
+    // Tablet: riêng biệt ở dưới
+    @media (max-width: 991.98px) {
+      grid-column: 1 / -1;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+    }
+    
 
+    
+    .social-section {
+      h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: $dark;
+        margin-bottom: 1rem;
+        
+        @media (max-width: 991.98px) {
+          text-align: center;
+        }
+      }
+      
       .social-icons {
-        align-self: flex-start;
+        display: flex;
+        gap: 0.75rem;
+        
+        @media (max-width: 991.98px) {
+          justify-content: center;
+        }
+        
+        .social-icon {
+          width: 3rem;
+          height: 3rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          text-decoration: none;
+          transition: all 0.2s ease;
+          
+          @media (max-width: 575.98px) {
+            width: 2rem;
+            height: 2rem;
+          }
+          
+          &.facebook {
+            background-color: #1877f2;
+            color: white;
+            
+            &:hover {
+              background-color: #166fe5;
+              transform: translateY(-2px);
+            }
+          }
+          
+          &.twitter {
+            background-color: #1da1f2;
+            color: white;
+            
+            &:hover {
+              background-color: #0c8bd9;
+              transform: translateY(-2px);
+            }
+          }
+          
+          &.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+            
+            &:hover {
+              transform: translateY(-2px);
+            }
+          }
+          
+          &.linkedin {
+            background-color: #0077b5;
+            color: white;
+            
+            &:hover {
+              background-color: #005885;
+              transform: translateY(-2px);
+            }
+          }
+          
+          i {
+            font-size: 1.1rem;
+            
+            @media (max-width: 575.98px) {
+              font-size: 1rem;
+            }
+          }
+        }
       }
     }
+    
+    .language-section {
+      h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: $dark;
+        margin-bottom: 1rem;
+        
+        @media (max-width: 991.98px) {
+          text-align: center;
+        }
+      }
+      
+      .language-selector {
+        select {
+          background-color: white;
+          border: 2px solid $blue;
+          border-radius: 0.5rem;
+          padding: 0.75rem 3rem 0.75rem 1rem;
+          font-size: 1rem;
+          color: $blue;
+          font-weight: 500;
+          cursor: pointer;
+          appearance: none;
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%233b82f6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+          background-position: right 0.75rem center;
+          background-repeat: no-repeat;
+          background-size: 1.5em 1.5em;
+          transition: all 0.2s ease;
+          min-width: 140px;
+          
+          @media (max-width: 575.98px) {
+            padding: 0.6rem 2.5rem 0.6rem 0.8rem;
+            font-size: 0.9rem;
+            min-width: 120px;
+          }
+          
+          &:hover {
+            border-color: darken($blue, 10%);
+            background-color: rgba($blue, 0.05);
+          }
+          
+          &:focus {
+            outline: none;
+            border-color: $blue;
+            box-shadow: 0 0 0 3px rgba($blue, 0.1);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Animation cho mobile toggle
+@media (max-width: 768px) {
+  .footer-column .column-title .mobile-toggle {
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-column .footer-links.expanded + .column-title .mobile-toggle {
+    transform: rotate(180deg);
   }
 }

@@ -12,25 +12,31 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        
-        $middleware->api(prepend: [
-            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-        ]);
 
-        
+        // $middleware->api(prepend: [
+        //     \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+        // ]);
+
+
         $middleware->alias([
             'check.role' => \App\Http\Middleware\CheckRole::class,
         ]);
 
-        
-        $middleware->web(append: [
+
+        $middleware->web(prepend: [
+            \Illuminate\Http\Middleware\HandleCors::class,
+
+        ]);
+
+        $middleware->api(prepend: [
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             \Illuminate\Http\Middleware\HandleCors::class,
         ]);
 
-        $middleware->api(append: [
-            \Illuminate\Http\Middleware\HandleCors::class,
+        $middleware->validateCsrfTokens(except: [
+            'api/*',
+            'authenticate',
+            'captcha',
         ]);
     })
-    ->withExceptions(function (Exceptions $exceptions) {
-        
-    })->create();
+    ->withExceptions(function (Exceptions $exceptions) {})->create();

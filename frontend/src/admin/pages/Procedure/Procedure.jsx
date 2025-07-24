@@ -6,6 +6,7 @@ import FieldsNeccessary from "../../components/QuanlyThutuc/FieldsNeccessary/Fie
 import SampleProcedure from "../../components/QuanlyThutuc/SampleProcedure/SampleProcedure";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import BreadcrumbComponent from "../../../components/common/Breadcrumb/BreadcrumbComponent";
 
 const Procedure = () => {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -18,21 +19,7 @@ const Procedure = () => {
     <>
       <DndProvider backend={HTML5Backend}>
         <section className="user-section py-3 px-3">
-          {/* Breadcrumb */}
-          <div className="breadcrumb-box mb-3">
-            <h4 className="title">Mẫu thủ tục</h4>
-            <nav className="breadcrumb-sub-box">
-              <ol className="breadcrumb">
-                <li className="breadcrumb-item">
-                  <Link to="#">Trang chủ</Link>
-                </li>
-                <li className="breadcrumb-item">Quản lý thủ tục</li>
-                <li className="breadcrumb-item active" aria-current="page">
-                  Mẫu thủ tục
-                </li>
-              </ol>
-            </nav>
-          </div>
+          <BreadcrumbComponent/>
 
           {/* Status indicator */}
           {isEditMode && (

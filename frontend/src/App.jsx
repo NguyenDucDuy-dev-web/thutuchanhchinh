@@ -9,22 +9,25 @@ import Login from "./public/Login";
 import UserLayout from "./layouts/UserLayout";
 import AdminLayout from "./layouts/AdminLayout";
 import Dashboard from "./admin/pages/Dashboard/Dashboard";
+import Procedure from "./admin/pages/Procedure/Procedure";
 import User from "./admin/pages/User/User";
 import Home from "./user/pages/Home/Home";
-import Procedure from "./admin/pages/Procedure/Procedure";
 import ListSampleProcedure from "./admin/pages/ListSampleProcedure/ListSampleProcedure";
 import News from "./admin/pages/News/News";
-
-
+import ProcedureUser from "./user/pages/Procedure/ProcedureUser";
+import ProcedureDetail from "./user/components/Procedures/ProcedureDetail/ProcedureDetail";
+import ListProcedureAdmin from "./admin/pages/ListProcedureAdmin/ListProcedureAdmin";
+import ProcedureSubmission from "./admin/pages/ProcedureSubmission/ProcedureSubmission";
 
 function App() {
   const homeadminRoutes = [
     { path: "dashboard", element: <Dashboard /> },
     { path: "user", element: <User /> },
-    // { path: "requests", element: <Requests /> },
+    { path: "listprocedures", element: <ListProcedureAdmin /> },
     { path: "procedure", element: <Procedure /> },
-    { path: "listsampleprocedure", element: <ListSampleProcedure/> },
-    { path: "news", element: <News/> },
+    { path: "listsampleprocedure", element: <ListSampleProcedure /> },
+    { path: "listproceduresubmission", element: <ProcedureSubmission /> },
+    { path: "news", element: <News /> },
     // { path: "sidebar", element: <Setting /> },
   ];
 
@@ -32,7 +35,8 @@ function App() {
     { path: "home", element: <Home /> },
     // { path: "user", element: <User/> },
     // { path: "requests", element: <Requests /> },
-    // { path: "procedures", element: <Procedures /> },
+    { path: "procedure", element: <ProcedureUser /> },
+    { path: "procedure/:id", element: <ProcedureDetail /> },
     // { path: "reports", element: <Reports /> },
     // { path: "sidebar", element: <Setting /> },
   ];

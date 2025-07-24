@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Fields;
+use App\Models\FormTemplateField;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -170,7 +171,7 @@ class FieldsController extends Controller
 
             return response()->json([
                 'status' => true,
-                'data' => $tableNames  
+                'data' => $tableNames
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -194,12 +195,60 @@ class FieldsController extends Controller
 
             return response()->json([
                 'status' => true,
-                'data' => $columns  
+                'data' => $columns
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
                 'message' => 'Lỗi khi lấy cột dữ liệu: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function getSourceData($id)
+    {
+        $formField = FormTemplateField::with('field')->find($id);
+
+        if (!$formField || !$formField->field) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Không tìm thấy field'
+            ], 404);
+        }
+
+        $field = $formField->field;
+
+        if (strtolower($field->input_type) !== 'db' || !$field->source_table || !$field->source_column) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Field này không có nguồn dữ liệu từ bảng'
+            ], 400);
+        }
+
+        try {
+            if (!Schema::hasTable($field->source_table)) {
+                return response()->json([
+                    'status' => false,
+                    'message' => "Không tìm thấy bảng {$field->source_table}"
+                ], 404);
+            }
+
+            $user = auth()->user();
+
+            $data = [
+                [
+                    $field->source_column => $user->{$field->source_column}
+                ]
+            ];
+
+            return response()->json([
+                'status' => true,
+                'data' => $data
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Lỗi truy vấn bảng dữ liệu: ' . $e->getMessage()
             ], 500);
         }
     }

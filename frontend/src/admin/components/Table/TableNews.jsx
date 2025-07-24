@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-table";
 import "./TableNews.scss";
 import ModalEditNews from "../QuanlyTintuc/ModalEditNews/ModalEditNews";
+import ModalDeleteNews from "../QuanlyTintuc/ModalDeleteNews/ModalDeleteNews";
 
 const TableNews = ({ data, onFetchNews }) => {
   const [showModal, setShowModal] = useState(false);
@@ -232,13 +233,12 @@ const TableNews = ({ data, onFetchNews }) => {
         news={selectedNews}
         onFetchNews={onFetchNews}
       />
-
-      {/* <ModalDeleteUser
+      <ModalDeleteNews
         show={showDeleteModal}
         onHide={handleCloseModalDelete}
-        user={selectedUser}
-        onUserDeleted={onUserUpdated}
-      /> */}
+        news={selectedNews}
+        onFetchNews={onFetchNews}
+      />
     </>
   );
 };

@@ -5,6 +5,7 @@ import "./News.scss";
 import FormAddNews from "../../components/QuanlyTintuc/FormAddNews/FormAddNews";
 import TableNews from "../../components/Table/TableNews";
 import { apiUrl, token } from "../../../components/common/Http";
+import BreadcrumbComponent from "../../../components/common/Breadcrumb/BreadcrumbComponent";
 const News = () => {
   const [news, setNews] = useState([]);
   const [searchKeyword, setSearchKeyWord] = useState("");
@@ -12,7 +13,7 @@ const News = () => {
   const filteredData = news.filter((item) =>
     item.title?.toLowerCase().includes(searchKeyword.toLowerCase())
   );
-  const fetchNews= async () => {
+  const fetchNews = async () => {
     const res = await fetch(apiUrl + "news", {
       method: "GET",
       headers: {
@@ -32,26 +33,12 @@ const News = () => {
   return (
     <>
       <section className="user-section py-3 px-3">
-        {/* Breadcrumb */}
-        <div className="breadcrumb-box mb-3">
-          <h4 className="title">Tin tức</h4>
-          <nav className="breadcrumb-sub-box">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <Link to="#">Trang chủ</Link>
-              </li>
-              <li className="breadcrumb-item">Quản lý tin tức</li>
-              <li className="breadcrumb-item active" aria-current="page">
-                Tin tức
-              </li>
-            </ol>
-          </nav>
-        </div>
+        <BreadcrumbComponent />
 
         <Row className="align-items-stretch">
           {/* Form Thêm tin tức */}
           <Col xs={12} md={4}>
-            <FormAddNews />
+            <FormAddNews onFetchNews={fetchNews} />
           </Col>
 
           {/* Danh sách tin tức */}
@@ -65,6 +52,7 @@ const News = () => {
                   type="text"
                   className="form-control search-input"
                   placeholder="Tìm kiếm"
+                  onChange={(e) => setSearchKeyWord(e.target.value)}
                 />
               </div>
               <div className="table-content">

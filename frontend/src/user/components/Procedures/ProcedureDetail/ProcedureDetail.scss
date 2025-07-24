@@ -1,0 +1,1270 @@
+@import "../../../../assets/stylecommon/color.scss";
+
+.procedure-detail-section {
+  padding: 1rem 0;
+  background-color: none;
+  font-family: "Roboto", sans-serif;
+  .custom-container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 3rem;
+    padding-right: 3rem;
+
+    @media (max-width: 1199.98px) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    @media (max-width: 991.98px) {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    @media (max-width: 767.98px) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    @media (max-width: 575.98px) {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+  }
+
+  .procedure-detail-box {
+    overflow: visible;
+
+    .procedure-detail-title {
+      padding: 30px;
+
+      @media (max-width: 1199.98px) {
+        padding: 25px;
+      }
+
+      @media (max-width: 991.98px) {
+        padding: 20px;
+      }
+
+      @media (max-width: 767.98px) {
+        padding: 15px;
+      }
+
+      @media (max-width: 575.98px) {
+        padding: 10px;
+      }
+    }
+  }
+
+  /* Image Section */
+  .image-wrapper {
+    margin-bottom: 20px;
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 767.98px) {
+      margin-bottom: 15px;
+    }
+
+    .image-box {
+      width: 100%;
+      height: 260px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      // Responsive image height
+      @media (max-width: 1199.98px) {
+        height: 240px;
+      }
+
+      @media (max-width: 991.98px) {
+        height: 220px;
+      }
+
+      // iPad mini - giữ height phù hợp
+      @media (min-width: 768px) and (max-width: 1024px) {
+        height: 100%;
+      }
+
+      @media (max-width: 767.98px) {
+        height: 200px;
+      }
+
+      @media (max-width: 575.98px) {
+        height: 180px;
+      }
+
+      .procedure-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  /* Content Section */
+  .content-wrapper {
+    margin-bottom: 20px;
+    padding-left: 3rem;
+
+    @media (max-width: 1199.98px) {
+      padding-left: 2rem;
+    }
+
+    @media (max-width: 991.98px) {
+      padding-left: 1.5rem;
+    }
+
+    // iPad mini - giữ padding và không margin bottom
+    @media (min-width: 768px) and (max-width: 1024px) {
+      padding-left: 1.5rem;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 767.98px) {
+      padding-left: 1rem;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 575.98px) {
+      padding-left: 0.5rem;
+    }
+
+    .content-box {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .procedure-header {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .procedure-title {
+          font-size: 32px;
+          font-weight: 700;
+          color: $dark;
+          margin-bottom: 15px;
+          line-height: 1.3;
+          padding-top: 1rem;
+          word-wrap: break-word;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+
+          @media (max-width: 1199.98px) {
+            font-size: 30px;
+          }
+
+          @media (max-width: 991.98px) {
+            font-size: 28px;
+            padding-top: 0.75rem;
+          }
+
+          // iPad mini - size nhỏ hơn nhưng vẫn lớn
+          @media (min-width: 768px) and (max-width: 1024px) {
+            font-size: 24px;
+            padding-top: 0.5rem;
+          }
+
+          @media (max-width: 767.98px) {
+            font-size: 24px;
+            padding-top: 0.5rem;
+            margin-bottom: 12px;
+          }
+
+          @media (max-width: 575.98px) {
+            font-size: 20px;
+            padding-top: 0.25rem;
+            margin-bottom: 10px;
+          }
+        }
+
+        .procedure-meta {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          margin-bottom: 15px;
+          flex-wrap: wrap;
+
+          // iPad mini
+          @media (min-width: 768px) and (max-width: 1024px) {
+            gap: 10px;
+            margin-bottom: 12px;
+          }
+
+          @media (max-width: 767.98px) {
+            gap: 10px;
+            margin-bottom: 12px;
+          }
+
+          .status {
+            font-size: 14px;
+            color: $dark;
+
+            // iPad mini
+            @media (min-width: 768px) and (max-width: 1024px) {
+              font-size: 13px;
+            }
+
+            @media (max-width: 575.98px) {
+              font-size: 12px;
+            }
+          }
+
+          .views-count {
+            font-size: 14px;
+            color: $dark;
+
+            // iPad mini
+            @media (min-width: 768px) and (max-width: 1024px) {
+              font-size: 13px;
+            }
+
+            @media (max-width: 575.98px) {
+              font-size: 12px;
+            }
+          }
+        }
+
+        .procedure-short_desc {
+          font-size: 16px;
+          line-height: 1.5;
+          color: $dark;
+          margin-bottom: 25px;
+          word-wrap: break-word;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+
+          @media (max-width: 991.98px) {
+            font-size: 15px;
+          }
+
+          // iPad mini
+          @media (min-width: 768px) and (max-width: 1024px) {
+            font-size: 14px;
+            margin-bottom: 18px;
+          }
+
+          @media (max-width: 767.98px) {
+            font-size: 14px;
+            margin-bottom: 20px;
+          }
+
+          @media (max-width: 575.98px) {
+            font-size: 13px;
+            margin-bottom: 15px;
+          }
+        }
+
+        .action-buttons {
+          display: flex;
+          gap: 10px;
+          justify-content: start;
+          padding-bottom: 1rem;
+
+          // iPad mini
+          @media (min-width: 768px) and (max-width: 1024px) {
+            gap: 8px;
+            padding-bottom: 0.5rem;
+          }
+
+          @media (max-width: 767.98px) {
+            gap: 8px;
+            padding-bottom: 0.75rem;
+          }
+
+          @media (max-width: 575.98px) {
+            flex-direction: column;
+            gap: 8px;
+            padding-bottom: 0.5rem;
+          }
+
+          .btn-xemhuongdan {
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            background: none;
+            color: #00bcd4;
+            border: 1px solid #00bcd4;
+            font-weight: 500;
+            white-space: nowrap;
+            border: none;
+
+            @media (max-width: 991.98px) {
+              padding: 0.5rem 1rem;
+              font-size: 14px;
+            }
+
+            // iPad mini
+            @media (min-width: 768px) and (max-width: 1024px) {
+              padding: 0.5rem 0.8rem;
+              font-size: 13px;
+            }
+
+            @media (max-width: 767.98px) {
+              padding: 0.5rem 0.8rem;
+            }
+
+            @media (max-width: 575.98px) {
+              width: 100%;
+              text-align: center;
+              padding: 0.6rem;
+            }
+          }
+
+          .btn-thuchien {
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            background: $blue;
+            color: $white;
+            border: 1px solid $blue;
+            font-weight: 500;
+            white-space: nowrap;
+
+            @media (max-width: 991.98px) {
+              padding: 0.5rem 1rem;
+              font-size: 14px;
+            }
+
+            // iPad mini
+            @media (min-width: 768px) and (max-width: 1024px) {
+              padding: 0.5rem 0.8rem;
+              font-size: 13px;
+            }
+
+            @media (max-width: 767.98px) {
+              padding: 0.5rem 0.8rem;
+            }
+
+            @media (max-width: 575.98px) {
+              width: 100%;
+              text-align: center;
+              padding: 0.6rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* Description Section */
+  .description-wrapper {
+    padding-right: 30px;
+
+    @media (max-width: 1199.98px) {
+      padding-right: 25px;
+    }
+
+    @media (max-width: 991.98px) {
+      padding-right: 20px;
+    }
+
+    // iPad mini - cho description thành full width và margin bottom
+    @media (min-width: 768px) and (max-width: 1024px) {
+      padding-right: 0;
+      margin-bottom: 25px;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      padding-right: 0;
+      margin-bottom: 20px;
+    }
+
+    .description-box {
+      h3 {
+        font-size: 26px;
+        font-weight: 500;
+        color: $dark;
+        margin-bottom: 15px;
+
+        @media (max-width: 1199.98px) {
+          font-size: 24px;
+        }
+
+        @media (max-width: 991.98px) {
+          font-size: 22px;
+        }
+
+        // iPad mini
+        @media (min-width: 768px) and (max-width: 1024px) {
+          font-size: 20px;
+          margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+          font-size: 20px;
+          margin-bottom: 12px;
+        }
+
+        @media (max-width: 575.98px) {
+          font-size: 18px;
+          margin-bottom: 10px;
+        }
+      }
+
+      .description-content {
+        color: $dark;
+        line-height: 1.6;
+        word-wrap: break-word;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        // iPad mini
+        @media (min-width: 768px) and (max-width: 1024px) {
+          font-size: 14px;
+          line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+          font-size: 14px;
+          line-height: 1.5;
+        }
+
+        @media (max-width: 575.98px) {
+          font-size: 13px;
+        }
+
+        p {
+          margin-bottom: 15px;
+
+          // iPad mini
+          @media (min-width: 768px) and (max-width: 1024px) {
+            margin-bottom: 12px;
+          }
+
+          @media (max-width: 768px) {
+            margin-bottom: 12px;
+          }
+
+          @media (max-width: 575.98px) {
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  /* Metadata Section */
+  .metadata-wrapper {
+    padding-left: 30px;
+
+    @media (max-width: 1199.98px) {
+      padding-left: 25px;
+    }
+
+    @media (max-width: 991.98px) {
+      padding-left: 20px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      padding-left: 1rem;
+      border-left: none;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      border-left: none;
+      padding-left: 0;
+      padding-top: 20px;
+    }
+
+    .metadata-box {
+      .metadata-item {
+        margin-bottom: 10px;
+
+        @media (max-width: 991.98px) {
+          margin-bottom: 12px;
+        }
+
+        // iPad mini
+        @media (min-width: 768px) and (max-width: 1024px) {
+          margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+          margin-bottom: 10px;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .metadata-label {
+          font-size: 12px;
+          font-weight: 800;
+          color: $dark;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+
+          @media (max-width: 575.98px) {
+            font-size: 11px;
+          }
+        }
+
+        .metadata-value {
+          font-size: 14px;
+          color: $dark;
+          font-weight: 400;
+          line-height: 1.4;
+          word-wrap: break-word;
+
+          // iPad mini
+          @media (min-width: 768px) and (max-width: 1024px) {
+            font-size: 13px;
+          }
+
+          @media (max-width: 575.98px) {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .procedure-detail-title {
+      padding: 25px;
+    }
+
+    .image-wrapper {
+      margin-bottom: 0; // Giữ layout ngang
+    }
+
+    .content-wrapper {
+      margin-bottom: 0; // Giữ layout ngang
+    }
+  }
+
+  // Mobile breakpoint
+  @media (max-width: 768px) {
+    .procedure-detail-title {
+      padding: 20px;
+    }
+
+    .procedure-header {
+      .procedure-title {
+        font-size: 24px;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+
+        .btn-xemhuongdan,
+        .btn-thuchien {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+
+    .description-wrapper {
+      padding-right: 0;
+      margin-bottom: 20px;
+    }
+
+    .metadata-wrapper {
+      border-left: none;
+      padding-left: 1rem;
+      padding-top: 20px;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .procedure-detail-title {
+      padding: 15px;
+    }
+
+    .content-wrapper {
+      padding-left: 0;
+    }
+
+    .description-wrapper,
+    .metadata-wrapper {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .procedure-detail-body {
+    padding: 30px;
+
+    @media (max-width: 1199.98px) {
+      padding: 25px;
+    }
+
+    @media (max-width: 991.98px) {
+      padding: 20px;
+    }
+
+    @media (max-width: 767.98px) {
+      padding: 15px;
+    }
+
+    @media (max-width: 575.98px) {
+      padding: 10px;
+    }
+
+    .suggestions-section {
+      .section-title {
+        margin-bottom: 30px;
+
+        @media (max-width: 991.98px) {
+          margin-bottom: 25px;
+        }
+
+        @media (max-width: 767.98px) {
+          margin-bottom: 20px;
+        }
+
+        h3 {
+          font-size: 24px;
+          font-weight: 600;
+          color: $dark;
+          margin: 0;
+
+          @media (max-width: 991.98px) {
+            font-size: 22px;
+          }
+
+          @media (max-width: 767.98px) {
+            font-size: 20px;
+          }
+
+          @media (max-width: 575.98px) {
+            font-size: 18px;
+          }
+        }
+      }
+
+      .row {
+        @media (max-width: 1024px) {
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          overflow-y: hidden;
+          margin: 0 -10px;
+          padding: 0 10px;
+          scroll-behavior: smooth;
+          -webkit-overflow-scrolling: touch;
+
+          // Hide scrollbar
+          &::-webkit-scrollbar {
+            display: none;
+          }
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+
+          .col-md-3 {
+            // iPad Pro
+            @media (min-width: 768px) and (max-width: 1024px) {
+              flex: 0 0 320px;
+              min-width: 320px;
+              max-width: 320px;
+              margin-right: 20px;
+            }
+
+            // Mobile
+            @media (max-width: 767.98px) {
+              flex: 0 0 280px;
+              min-width: 280px;
+              max-width: 280px;
+              margin-right: 15px;
+
+              @media (max-width: 575.98px) {
+                flex: 0 0 250px;
+                min-width: 250px;
+                max-width: 250px;
+                margin-right: 12px;
+              }
+            }
+
+            &:last-child {
+              margin-right: 0;
+              padding-right: 10px;
+            }
+          }
+        }
+      }
+
+      .suggestion-card {
+        background: white;
+        border-radius: 12px;
+        border: 1px solid #e0e0e0;
+        overflow: hidden;
+        height: 100%;
+        margin-bottom: 20px;
+
+        @media (max-width: 1024px) {
+          margin-bottom: 0;
+          height: auto;
+        }
+
+        .card-image {
+          width: 100%;
+          height: 160px;
+          overflow: hidden;
+          position: relative;
+          padding: 0.6rem 0.6rem 0 0.6rem;
+
+          @media (max-width: 1024px) {
+            height: 140px;
+          }
+
+          @media (max-width: 767.98px) {
+            height: 120px;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .card-content {
+          padding: 20px;
+          padding-bottom: 0;
+
+          @media (max-width: 991.98px) {
+            padding: 18px;
+          }
+
+          @media (max-width: 767.98px) {
+            padding: 15px;
+          }
+
+          @media (max-width: 575.98px) {
+            padding: 12px;
+          }
+
+          .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: $dark;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+
+            @media (max-width: 991.98px) {
+              font-size: 15px;
+            }
+
+            @media (max-width: 767.98px) {
+              font-size: 14px;
+              margin-bottom: 10px;
+            }
+
+            @media (max-width: 575.98px) {
+              font-size: 13px;
+            }
+          }
+
+          .card-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+
+            @media (max-width: 991.98px) {
+              font-size: 13px;
+            }
+
+            @media (max-width: 767.98px) {
+              font-size: 12px;
+              margin-bottom: 12px;
+              -webkit-line-clamp: 2;
+            }
+
+            @media (max-width: 575.98px) {
+              font-size: 11px;
+            }
+          }
+
+          .card-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            @media (max-width: 767.98px) {
+              gap: 10px;
+              margin-bottom: 12px;
+            }
+
+            .card-type {
+              background: linear-gradient(180deg, #134067 0%, #4ba8f8 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              color: transparent;
+              font-size: 0.85rem;
+              font-weight: 500;
+
+              @media (max-width: 575.98px) {
+                font-size: 11px;
+              }
+            }
+
+            .card-status {
+              background: linear-gradient(180deg, #134067 0%, #4ba8f8 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              color: transparent;
+              font-size: 0.85rem;
+              font-weight: 500;
+
+              @media (max-width: 575.98px) {
+                font-size: 11px;
+              }
+            }
+          }
+
+          .btn-view-detail {
+            width: 100%;
+            padding: 10px;
+            background: none;
+            color: #0d47a1;
+            border: 2px solid $blue;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            @media (max-width: 991.98px) {
+              font-size: 13px;
+              padding: 9px;
+            }
+
+            @media (max-width: 767.98px) {
+              font-size: 12px;
+              padding: 8px;
+            }
+
+            &:hover {
+              background: $background_color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive cho cards - Desktop only
+  @media (min-width: 1025px) and (max-width: 1199.98px) {
+    .suggestions-section {
+      .suggestion-card {
+        .card-image {
+          height: 140px;
+        }
+      }
+    }
+  }
+
+  .procedure-detail-footer {
+    padding: 30px;
+
+    @media (max-width: 1199.98px) {
+      padding: 25px;
+    }
+
+    @media (max-width: 991.98px) {
+      padding: 20px;
+    }
+
+    @media (max-width: 767.98px) {
+      padding: 15px;
+    }
+
+    @media (max-width: 575.98px) {
+      padding: 10px;
+    }
+
+    .comment-section {
+      .comment-title {
+        margin-bottom: 30px;
+
+        @media (max-width: 991.98px) {
+          margin-bottom: 25px;
+        }
+
+        @media (max-width: 767.98px) {
+          margin-bottom: 20px;
+        }
+
+        h3 {
+          font-size: 24px;
+          font-weight: 600;
+          color: $dark;
+          margin: 0;
+
+          @media (max-width: 991.98px) {
+            font-size: 22px;
+          }
+
+          @media (max-width: 767.98px) {
+            font-size: 20px;
+          }
+
+          @media (max-width: 575.98px) {
+            font-size: 18px;
+          }
+        }
+      }
+
+      .comment-main-col {
+        @media (max-width: 991.98px) {
+          margin-bottom: 30px;
+        }
+
+        @media (max-width: 767.98px) {
+          margin-bottom: 25px;
+        }
+      }
+
+      .comment-sidebar-col {
+        @media (max-width: 991.98px) {
+          margin-top: 0;
+        }
+      }
+
+      .comment-input-wrapper {
+        margin-bottom: 25px;
+
+        @media (max-width: 767.98px) {
+          margin-bottom: 20px;
+        }
+
+        .comment-input-box {
+          background: #bbdefb;
+          border-radius: 12px;
+          padding: 20px;
+
+          @media (max-width: 767.98px) {
+            padding: 15px;
+          }
+
+          @media (max-width: 575.98px) {
+            padding: 12px;
+          }
+
+          .comment-input-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+
+            @media (max-width: 767.98px) {
+              gap: 12px;
+            }
+
+            @media (max-width: 575.98px) {
+              gap: 10px;
+            }
+
+            .user-avatar {
+              flex-shrink: 0;
+
+              .avatar-img {
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid $blue;
+
+                @media (max-width: 767.98px) {
+                  width: 40px;
+                  height: 40px;
+                }
+
+                @media (max-width: 575.98px) {
+                  width: 36px;
+                  height: 36px;
+                  align-self: flex-start;
+                }
+              }
+            }
+
+            .input-content {
+              flex: 1;
+
+              @media (max-width: 575.98px) {
+                width: 100%;
+              }
+
+              .comment-input {
+                width: 100%;
+                padding: 12px 15px;
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                resize: vertical;
+                font-size: 14px;
+                line-height: 1.5;
+                font-family: inherit;
+                outline: none;
+                transition: border-color 0.3s ease;
+
+                @media (max-width: 767.98px) {
+                  padding: 10px 12px;
+                  font-size: 13px;
+                }
+
+                &::placeholder {
+                  color: #999;
+                }
+
+                &:focus {
+                  border-color: $blue;
+                  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+                }
+              }
+            }
+
+            .send-message-btn {
+              background: $blue;
+              color: $white;
+              border: none;
+              padding: 12px 24px;
+              border-radius: 6px;
+              font-size: 14px;
+              font-weight: 500;
+              cursor: pointer;
+              transition: background-color 0.3s ease;
+              white-space: nowrap;
+
+              @media (max-width: 767.98px) {
+                padding: 10px 20px;
+                font-size: 13px;
+              }
+
+              @media (max-width: 575.98px) {
+                padding: 10px;
+              }
+
+              &:hover {
+                background: darken($blue, 10%);
+              }
+            }
+          }
+        }
+      }
+
+      // Comments List
+      .comments-list {
+        .comment-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 15px;
+          padding: 20px;
+          background: none;
+          border-bottom: 1px solid #eee;
+          margin-bottom: 15px;
+
+          
+          &:last-child {
+            border-bottom: none;
+          }
+
+          @media (max-width: 767.98px) {
+            gap: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+          }
+
+          @media (max-width: 575.98px) {
+            gap: 10px;
+            padding: 12px;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .comment-avatar {
+            flex-shrink: 0;
+
+            .avatar-img-gray {
+              width: 48px;
+              height: 48px;
+              border-radius: 50%;
+              object-fit: cover;
+              border: 2px solid #ccc;
+
+              @media (max-width: 767.98px) {
+                width: 40px;
+                height: 40px;
+              }
+
+              @media (max-width: 575.98px) {
+                width: 36px;
+                height: 36px;
+              }
+            }
+          }
+
+          .comment-content {
+            flex: 1;
+
+            .comment-header {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              margin-bottom: 8px;
+
+              @media (max-width: 575.98px) {
+                gap: 8px;
+                margin-bottom: 6px;
+              }
+
+              .comment-author {
+                font-size: 16px;
+                font-weight: 600;
+                color: $dark;
+                margin: 0;
+
+                @media (max-width: 767.98px) {
+                  font-size: 15px;
+                }
+
+                @media (max-width: 575.98px) {
+                  font-size: 14px;
+                }
+              }
+
+              .comment-date {
+                font-size: 13px;
+                color: #666;
+
+                @media (max-width: 575.98px) {
+                  font-size: 12px;
+                }
+              }
+            }
+
+            .comment-text {
+              font-size: 14px;
+              line-height: 1.6;
+              color: $dark;
+              margin: 0;
+              word-wrap: break-word;
+
+              @media (max-width: 767.98px) {
+                font-size: 13px;
+              }
+
+              @media (max-width: 575.98px) {
+                font-size: 12px;
+                line-height: 1.5;
+              }
+            }
+          }
+        }
+      }
+
+      // Right Sidebar
+      .comment-sidebar {
+        @media (max-width: 991.98px) {
+          padding-top: 20px;
+          padding-left: 2rem;
+        }
+
+        @media (max-width: 767.98px) {
+          padding-top: 15px;
+          padding-left: 1.5rem;
+        }
+
+        .sidebar-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 12px 0;
+          cursor: pointer;
+          transition: opacity 0.3s ease;
+
+          &:first-child {
+            padding-top: 0;
+          }
+          @media (max-width: 767.98px) {
+            gap: 10px;
+            padding: 10px 0;
+          }
+
+          &:hover {
+            opacity: 0.8;
+          }
+
+          &.active {
+            .sidebar-text {
+              color: $blue;
+              font-weight: 500;
+            }
+
+            .sidebar-icon i {
+              color: $blue;
+            }
+          }
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          .sidebar-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+
+            @media (max-width: 575.98px) {
+              width: 20px;
+              height: 20px;
+            }
+
+            i {
+              font-size: 16px;
+              color: $blue;
+
+              @media (max-width: 575.98px) {
+                font-size: 14px;
+              }
+            }
+          }
+
+          .sidebar-text {
+            font-size: 13px;
+            color: $dark;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+
+            @media (max-width: 575.98px) {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

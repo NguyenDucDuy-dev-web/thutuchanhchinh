@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { apiUrl, token } from "../../../components/common/Http";
 import TableSampleProcedure from "../../components/Table/TableSampleProcedure";
 import ModalPreviewBlodProcedure from "./../../components/QuanlyThutuc/SampleProcedure/ModalPreviewBlobProcedure";
+import BreadcrumbComponent from "../../../components/common/Breadcrumb/BreadcrumbComponent";
 
 const ListSampleProcedure = () => {
   const [sampleProcedure, setSampleProcedure] = useState([]);
@@ -114,21 +115,7 @@ const ListSampleProcedure = () => {
   return (
     <>
       <section className="user-section py-3 px-3">
-        {/* Breadcrumb */}
-        <div className="breadcrumb-box mb-3">
-          <h4 className="title">Danh sách mẫu thủ tục</h4>
-          <nav className="breadcrumb-sub-box">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <Link to="#">Trang chủ</Link>
-              </li>
-              <li className="breadcrumb-item">Danh sách mẫu thủ tục</li>
-              <li className="breadcrumb-item active" aria-current="page">
-                Danh sách mẫu thủ tục
-              </li>
-            </ol>
-          </nav>
-        </div>
+        <BreadcrumbComponent />
 
         <Row className="align-items-stretch">
           <Col xs={12} md={12} className="mt-3 mt-md-0">
@@ -171,7 +158,7 @@ const ListSampleProcedure = () => {
         onHide={handleClosePreview}
         pdfBlobUrl={selectedTemplate?.pdfBlobUrl}
         placedFields={selectedTemplate?.fields || []}
-        numPages={selectedTemplate?.num_pages || 1}
+        // numPages={selectedTemplate?.num_pages || 1}
       />
     </>
   );

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import "./FormAddNews.scss";
 import { apiUrl, token } from "../../../../components/common/Http";
 
-const FormAddNews = () => {
+const FormAddNews = (onFetchNews) => {
   const {
     register,
     handleSubmit,
@@ -81,6 +81,7 @@ const FormAddNews = () => {
         reset(); 
         setUploadedImage(null);
         setfileName("");
+        if (onFetchNews) onFetchNews();
       } else {
         toast.error(result.message || "Thêm tin thất bại!");
       }

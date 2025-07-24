@@ -19,7 +19,7 @@ const UserLayout = () => {
           <Outlet />
         </main>
 
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </>
   );

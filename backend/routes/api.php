@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\FieldsController;
 use App\Http\Controllers\Admin\FormTemplateController;
 use App\Http\Controllers\Admin\FormTemplateFileController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\ProcedureController;
+use App\Http\Controllers\Admin\ProcedureSubmissionController;
 use App\Http\Controllers\Admin\SidebarController;
 use App\Http\Controllers\Admin\TempImageController;
 use App\Http\Controllers\Admin\UserController;
@@ -14,7 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 //1. Public route để login
-Route::post('authenticate', [AuthenticationController::class, 'authenticate']);
+// Route::post('authenticate', [AuthenticationController::class, 'authenticate']);
 
 
 Route::get('form-templates/file/{filename}', [FormTemplateFileController::class, 'getFile']);
@@ -48,11 +50,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
             Route::get('/', [FieldsController::class, 'index']);
             Route::post('/', [FieldsController::class, 'store']);
 
-            
+
             Route::get('/tables', [FieldsController::class, 'getAllTables']);
             Route::get('/columns/{table}', [FieldsController::class, 'getTableColumns']);
+            Route::get('/fields/{id}/source-data', [FieldsController::class, 'getSourceData']);
 
-            
             Route::get('/{id}', [FieldsController::class, 'show']);
             Route::put('/{id}', [FieldsController::class, 'update']);
             Route::delete('/{id}', [FieldsController::class, 'destroy']);
@@ -65,6 +67,22 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
             Route::put('/{id}', [FormTemplateController::class, 'update']);
             Route::delete('/{id}', [FormTemplateController::class, 'destroy']);
             Route::put('/restore/{id}', [FormTemplateController::class, 'restore']);
+        });
+
+        Route::prefix('procedures')->group(function () {
+            Route::get('/', [ProcedureController::class, 'index']);
+            Route::post('/', [ProcedureController::class, 'store']);
+            Route::get('/{id}', [ProcedureController::class, 'show']);
+            Route::put('/{id}', [ProcedureController::class, 'update']);
+            Route::delete('/{id}', [ProcedureController::class, 'destroy']);
+        });
+
+        Route::prefix('submission')->group(function () {
+            Route::get('/', [ProcedureSubmissionController::class, 'index']);
+            Route::post('/', [ProcedureSubmissionController::class, 'store']);
+            Route::get('/{id}', [ProcedureSubmissionController::class, 'show']);
+            Route::put('/{id}', [ProcedureSubmissionController::class, 'update']);
+            Route::delete('/{id}', [ProcedureSubmissionController::class, 'destroy']);
         });
     });
 
