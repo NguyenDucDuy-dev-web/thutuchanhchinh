@@ -68,12 +68,6 @@ const ModalSaveTemplate = ({ show, onHide, placedFields }) => {
       )
     );
 
-    // Debug: Log FormData content
-    console.log("FormData entries:");
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + ': ', pair[1]);
-    }
-
     setLoading(true);
     try {
       const res = await fetch(`${apiUrl}procedure/form-templates`, {
@@ -123,7 +117,7 @@ const ModalSaveTemplate = ({ show, onHide, placedFields }) => {
   };
 
   return (
-    <Modal show={show} onHide={onHide}>
+    <Modal show={show} onHide={onHide} style={{ fontFamily: 'Roboto, sans-serif' }}>
       <Modal.Header closeButton>
         <Modal.Title>Lưu mẫu thủ tục</Modal.Title>
       </Modal.Header>

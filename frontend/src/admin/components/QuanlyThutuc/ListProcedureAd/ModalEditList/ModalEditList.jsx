@@ -9,6 +9,7 @@ const ModalEditList = ({
   procedures,
   onFetchProcedures,
   formTemplates,
+  procedureProcess,
 }) => {
   const {
     register,
@@ -87,6 +88,7 @@ const ModalEditList = ({
       image: procedures.image || "",
       type: procedures.type?.toString() || "",
       format: procedures.format?.toString() || "",
+      process_id: procedures.process_id?.toString() || "",
       form_template_id: procedures.form_template_id?.toString() || "",
       imageId: "",
     });
@@ -113,8 +115,10 @@ const ModalEditList = ({
       if (data.time) updateData.time = data.time;
       if (data.type !== "") updateData.type = parseInt(data.type);
       if (data.format !== "") updateData.format = parseInt(data.format);
-      if (data.form_template_id !== "") updateData.form_template_id = parseInt(data.form_template_id);
-
+      if (data.process_id !== "")
+        updateData.process_id = parseInt(data.process_id);
+      if (data.form_template_id !== "")
+        updateData.form_template_id = parseInt(data.form_template_id);
 
       if (data.imageId && data.imageId > 0) {
         updateData.imageId = data.imageId;
@@ -151,7 +155,11 @@ const ModalEditList = ({
   };
   return (
     <>
-      <Modal show={show} onHide={onHide}>
+      <Modal
+        show={show}
+        onHide={onHide}
+        style={{ fontFamily: "Roboto, sans-serif" }}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Chỉnh sửa thủ tục</Modal.Title>
         </Modal.Header>
@@ -345,6 +353,35 @@ const ModalEditList = ({
                   {errors.format && (touchedFields.format || isSubmitted) && (
                     <p className="invalid-feedback">{errors.format?.message}</p>
                   )}
+                </div>
+
+                <label htmlFor="process_id">Chọn quy trình xử lý:</label>
+                <div className="input-group">
+                  <select
+                    {...register("process_id", {
+                      required: "Vui lòng chọn quy trình xử lý",
+                    })}
+                    id="process_id"
+                    className={`form-control ${
+                      errors.process_id && "is-invalid"
+                    }`}
+                  >
+                    <option value="">-- Chọn quy trình xử lý --</option>
+                    {procedureProcess.map((procedureProcess) => (
+                      <option
+                        key={procedureProcess.id}
+                        value={procedureProcess.id}
+                      >
+                        {procedureProcess.name}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.process_id &&
+                    (touchedFields.process_id || isSubmitted) && (
+                      <p className="invalid-feedback">
+                        {errors.process_id?.message}
+                      </p>
+                    )}
                 </div>
 
                 <label htmlFor="form_template_id">Chọn mẫu thủ tục:</label>

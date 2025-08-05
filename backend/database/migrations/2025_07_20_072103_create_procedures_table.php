@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('procedures', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('form_template_id');
+            $table->unsignedBigInteger('process_id')->nullable();
             $table->string('title');
             $table->string('short_desc');
             $table->text('content');
@@ -21,8 +23,11 @@ return new class extends Migration
             $table->string('image');
             $table->integer('type')->default(0);
             $table->integer('format')->default(0);
-            $table->unsignedBigInteger('form_template_id');
             $table->timestamps();
+
+
+            $table->foreign('form_template_id')->references('id')->on('form_templates')->onDelete('restrict');
+            $table->foreign('process_id')->references('id')->on('procedure_processes')->onDelete('restrict');
         });
     }
 

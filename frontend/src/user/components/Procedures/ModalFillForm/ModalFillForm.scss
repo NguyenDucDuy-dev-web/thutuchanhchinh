@@ -1,0 +1,67 @@
+@import "../../../../assets/stylecommon/color.scss";
+
+.modal-fill-form {
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    gap: 1rem;
+
+    .btn {
+      flex: 1;
+      min-width: 120px;
+      height: 38px;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: all 0.2s ease-in-out;
+
+    //   &:hover {
+    //     transform: translateY(-1px);
+    //     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    //   }
+
+    //   &:active {
+    //     transform: translateY(0);
+    //   }
+
+      &.btn-preview {
+        background-color: $blue;
+        border-color: $blue;
+        color: $white;
+
+        &:hover {
+          background-color: $blue;
+          border-color: $blue;
+          opacity: 0.9;
+        }
+
+        &:disabled {
+          background-color: $blue;
+          border-color: $blue;
+          opacity: 0.6;
+          transform: none;
+          box-shadow: none;
+        }
+      }
+
+      &.btn-submit {
+        background-color: $blue;
+        border-color: $blue;
+        color: $white;
+
+        &:hover {
+          background-color: $blue;
+          border-color: $blue;
+          opacity: 0.9;
+        }
+      }
+    }
+
+    .spinner-border {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+  }
+}

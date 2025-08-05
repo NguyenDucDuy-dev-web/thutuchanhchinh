@@ -61,7 +61,7 @@ const ModalEditUser = ({ show, onHide, user, onUserUpdated }) => {
   };
   return (
     <>
-      <Modal show={show} onHide={onHide}>
+      <Modal show={show} onHide={onHide} style={{ fontFamily: 'Roboto, sans-serif' }}>
         <Modal.Header closeButton>
           <Modal.Title>Chỉnh sửa người dùng</Modal.Title>
         </Modal.Header>

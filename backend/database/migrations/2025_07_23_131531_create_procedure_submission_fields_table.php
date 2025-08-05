@@ -18,7 +18,15 @@ return new class extends Migration
             $table->text('value')->nullable();
             $table->timestamps();
 
+            $table->foreign('submission_id')
+                ->references('id')->on('procedure_submissions')
+                ->onDelete('cascade'); 
 
+            $table->foreign('field_id')
+                ->references('id')->on('fields')
+                ->onDelete('restrict');
+
+                
             $table->index('submission_id');
             $table->index('field_id');
         });

@@ -7,8 +7,6 @@ import BreadcrumbComponent from "../../../components/common/Breadcrumb/Breadcrum
 
 const ProcedureSubmission = () => {
   const [procedureSubmission, setProcedureSubmission] = useState([]);
-  //   const [showPreview, setShowPreview] = useState(false);
-  //   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [loading, setLoading] = useState(true);
   const [searchKeyword, setSearchKeyWord] = useState("");
   const filteredData = procedureSubmission.filter(
@@ -76,16 +74,9 @@ const ProcedureSubmission = () => {
                     <p className="mt-2 mb-0">Đang tải dữ liệu...</p>
                   </div>
                 ) : (
-                  //   <TableSampleProcedure
-                  //     data={filteredData}
-                  //     onPreview={handlePreview}
-                  //     onUpdated={fetchSampleProcedure}
-                  //   />
 
                   <TableProcedureSubmission
                     data={filteredData}
-                    //     onPreview={handlePreview}
-                    //     onUpdated={fetchSampleProcedure}
                   />
                 )}
               </div>

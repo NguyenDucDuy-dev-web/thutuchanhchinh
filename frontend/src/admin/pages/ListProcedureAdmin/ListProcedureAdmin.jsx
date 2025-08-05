@@ -8,22 +8,33 @@ import BreadcrumbComponent from "../../../components/common/Breadcrumb/Breadcrum
 const ListProcedureAdmin = () => {
   const [procedures, setProcedures] = useState([]);
   const [searchKeyword, setSearchKeyWord] = useState("");
-
+  const [loading, setLoading] = useState(true);
   const filteredData = procedures.filter((item) =>
     item.title?.toLowerCase().includes(searchKeyword.toLowerCase())
   );
   const fetchProcedures = async () => {
-    const res = await fetch(apiUrl + "procedure" + "/procedures", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token()}`,
-      },
-    });
+    try {
+      setLoading(true);
+      const res = await fetch(apiUrl + "procedure" + "/procedures", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${token()}`,
+        },
+      });
 
-    const result = await res.json();
-    setProcedures(result.data);
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+
+      const result = await res.json();
+      setProcedures(result.data);
+    } catch (error) {
+      console.error("Lỗi khi tải danh sách thủ tục:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -34,11 +45,14 @@ const ListProcedureAdmin = () => {
 
   const fetchTemplates = async () => {
     try {
-      const res = await fetch(apiUrl + "procedure" + "/form-templates", {
-        headers: {
-          Authorization: `Bearer ${token()}`,
-        },
-      });
+      const res = await fetch(
+        apiUrl + "procedure" + "/form-templates/getformtemplates",
+        {
+          headers: {
+            Authorization: `Bearer ${token()}`,
+          },
+        }
+      );
       const result = await res.json();
       if (result.status) {
         setFormTemplates(result.data);
@@ -52,6 +66,32 @@ const ListProcedureAdmin = () => {
   useEffect(() => {
     fetchTemplates();
   }, []);
+
+  const [procedureProcess, setProcedureProcess] = useState([]);
+
+  const fetchProcedureProcess = async () => {
+    try {
+      const res = await fetch(
+        apiUrl + "procedure" + "/process",
+        {
+          headers: {
+            Authorization: `Bearer ${token()}`,
+          },
+        }
+      );
+      const result = await res.json();
+      if (result.status) {
+        setProcedureProcess(result.data);
+      } else {
+        toast.error("Không tải được danh sách quy trình xử lý");
+      }
+    } catch (err) {
+      toast.error("Lỗi khi gọi API quy trình xử lý");
+    }
+  };
+  useEffect(() => {
+    fetchProcedureProcess();
+  }, []);
   return (
     <>
       <section className="user-section py-3 px-3">
@@ -63,6 +103,7 @@ const ListProcedureAdmin = () => {
             <FormAddList
               fetchProcedures={fetchProcedures}
               formTemplates={formTemplates}
+              procedureProcess = {procedureProcess}
             />
           </Col>
 
@@ -81,11 +122,21 @@ const ListProcedureAdmin = () => {
                 />
               </div>
               <div className="table-content">
-                <TableProcedures
-                  data={filteredData}
-                  fetchProcedures={fetchProcedures}
-                  formTemplates={formTemplates}
-                />
+                {loading ? (
+                  <div className="text-center py-4">
+                    <div className="spinner-border text-primary" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                    <p className="mt-2 mb-0">Đang tải dữ liệu...</p>
+                  </div>
+                ) : (
+                  <TableProcedures
+                    data={filteredData}
+                    fetchProcedures={fetchProcedures}
+                    formTemplates={formTemplates}
+                    procedureProcess = {procedureProcess}
+                  />
+                )}
               </div>
             </div>
           </Col>

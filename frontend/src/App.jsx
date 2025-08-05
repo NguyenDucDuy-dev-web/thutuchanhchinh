@@ -18,6 +18,9 @@ import ProcedureUser from "./user/pages/Procedure/ProcedureUser";
 import ProcedureDetail from "./user/components/Procedures/ProcedureDetail/ProcedureDetail";
 import ListProcedureAdmin from "./admin/pages/ListProcedureAdmin/ListProcedureAdmin";
 import ProcedureSubmission from "./admin/pages/ProcedureSubmission/ProcedureSubmission";
+import ProcedureProcess from "./admin/pages/ProcedureProcess/ProcedureProcess";
+import SampleMail from "./admin/pages/SampleEmail/SampleMail";
+import SendEmail from "./admin/pages/SendEmail/SendEmail";
 
 function App() {
   const homeadminRoutes = [
@@ -28,6 +31,9 @@ function App() {
     { path: "listsampleprocedure", element: <ListSampleProcedure /> },
     { path: "listproceduresubmission", element: <ProcedureSubmission /> },
     { path: "news", element: <News /> },
+    { path: "procedureprocess", element: <ProcedureProcess /> },
+    { path: "samplemail", element: <SampleMail /> },
+    { path: "sendemail", element: <SendEmail /> },
     // { path: "sidebar", element: <Setting /> },
   ];
 

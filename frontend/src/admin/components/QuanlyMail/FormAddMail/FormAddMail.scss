@@ -1,0 +1,410 @@
+@import "../../../../assets/stylecommon/color.scss";
+
+.form-box-mail {
+  background: $white;
+  border-radius: 0.3rem;
+  box-shadow: 0 0.125rem 0.6rem rgba(0, 0, 0, 0.06);
+  border: solid 1px #eee;
+  .form-title-mail {
+    padding: 0.3rem;
+    span {
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.3rem;
+    }
+
+    border-bottom: 1px solid #ccc;
+  }
+
+  .form-content-mail {
+    margin-top: 0.5rem;
+    form {
+      label {
+        padding-left: 0.6rem;
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+      .input-group {
+        padding-left: 0.6rem;
+        padding-right: 0.6rem;
+        margin-bottom: 0.8rem;
+        input {
+          border: 1px solid #ccc;
+          font-size: 0.9rem;
+          height: 90%;
+        }
+        input::placeholder {
+          font-size: 0.9rem;
+          color: $gray;
+        }
+        select {
+          font-size: 0.8rem;
+          color: $gray;
+          height: 31px;
+          option {
+            font-size: 0.8rem;
+            color: $gray;
+          }
+        }
+      }
+
+      .btn-group {
+        display: flex;
+        padding: 1rem 0.6rem 1rem 0.6rem;
+        gap: 1.3rem;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        border-top: 1px solid #ccc;
+        .btn-reset {
+          background: $white;
+          border: 2px solid $blue;
+          border-radius: 5px;
+          i {
+            font-size: 0.9rem;
+            color: $blue;
+            font-weight: 500;
+          }
+          .reset {
+            font-size: 0.9rem;
+          }
+        }
+
+        .btn-add {
+          background: $blue;
+          border: 2px solid $blue;
+          border-radius: 5px;
+          i {
+            font-size: 0.9rem;
+            color: $white;
+          }
+          .add {
+            font-size: 0.9rem;
+            color: $white;
+          }
+        }
+      }
+    }
+    .input-group {
+      .rich-editor-toolbar {
+        border: 1px solid #ced4da;
+        border-bottom: none;
+        border-radius: 0.25rem 0.25rem 0 0;
+        padding: 10px;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
+        width: 100%;
+
+        // Font Family Select
+        .font-select {
+          padding: 4px 6px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 12px;
+          min-width: 120px;
+
+          &:hover {
+            border-color: #007bff;
+          }
+        }
+
+        // Toolbar Divider
+        .toolbar-divider {
+          width: 1px;
+          height: 25px;
+          background-color: #ccc;
+          margin: 0 4px;
+        }
+
+        // Format Buttons
+        .format-btn {
+          padding: 6px 10px;
+          border: 1px solid #ccc;
+          background-color: #fff;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 14px;
+          min-width: 35px;
+          transition: background-color 0.2s ease;
+
+          &:hover {
+            background-color: #e9ecef;
+          }
+
+          &.bold {
+            font-weight: bold;
+          }
+
+          &.italic {
+            font-style: italic;
+          }
+
+          &.underline {
+            text-decoration: underline;
+          }
+
+          &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+          }
+        }
+
+        // Color Picker Container
+        .color-picker-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .color-input {
+            width: 35px;
+            height: 25px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 0;
+            transition: border-color 0.2s ease;
+
+            &:hover {
+              border-color: #007bff;
+            }
+          }
+
+          .color-label {
+            font-size: 10px;
+            margin-top: 2px;
+            color: #666;
+          }
+        }
+      }
+
+      // Content Editable Area
+      .rich-editor-content {
+        min-height: 300px;
+        border: 1px solid #ced4da;
+        border-top: none;
+        border-radius: 0 0 0.25rem 0.25rem;
+        padding: 15px;
+        background-color: #fff;
+        outline: none;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #495057;
+        font-family: "Roboto", sans-serif;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        margin-left: 0 !important;
+
+        &[data-placeholder]:empty:before {
+          content: attr(data-placeholder);
+          color: #6c757d;
+          pointer-events: none;
+          font-style: italic;
+        }
+
+        &:focus {
+          border-color: #007bff;
+          box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        &.is-invalid {
+          border-color: #dc3545;
+
+          &:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+          }
+        }
+
+        // List Styling
+        ul {
+          padding-left: 20px;
+          margin: 10px 0;
+
+          li {
+            margin: 5px 0;
+            list-style-type: disc;
+          }
+        }
+
+        ol {
+          padding-left: 20px;
+          margin: 10px 0;
+
+          li {
+            margin: 5px 0;
+            list-style-type: decimal;
+          }
+        }
+
+        // Paragraph Styling
+        p {
+          margin: 8px 0;
+
+          &:first-child {
+            margin-top: 0;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        // Link Styling
+        a {
+          color: #007bff;
+          text-decoration: underline;
+
+          &:hover {
+            color: #0056b3;
+          }
+        }
+
+        // Table Styling (if added in future)
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          margin: 10px 0;
+
+          td,
+          th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+          }
+
+          th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+          }
+        }
+
+        // Blockquote Styling
+        blockquote {
+          margin: 10px 0;
+          padding: 10px 15px;
+          border-left: 4px solid #007bff;
+          background-color: #f8f9fa;
+          font-style: italic;
+        }
+
+        // Code Styling
+        code {
+          background-color: #f8f9fa;
+          padding: 2px 4px;
+          border-radius: 3px;
+          font-family: "Courier New", monospace;
+          font-size: 90%;
+        }
+
+        pre {
+          background-color: #f8f9fa;
+          padding: 10px;
+          border-radius: 4px;
+          overflow-x: auto;
+          margin: 10px 0;
+
+          code {
+            background: none;
+            padding: 0;
+          }
+        }
+
+        // Text Alignment Classes
+        &.text-left {
+          text-align: left;
+        }
+
+        &.text-center {
+          text-align: center;
+        }
+
+        &.text-right {
+          text-align: right;
+        }
+
+        &.text-justify {
+          text-align: justify;
+        }
+      }
+    }
+  }
+}
+
+// Global Rich Editor Styles
+.rich-editor {
+  // Animation for spinner
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    .rich-editor-toolbar {
+      padding: 8px;
+      gap: 4px;
+
+      .font-select {
+        min-width: 100px;
+        font-size: 11px;
+      }
+
+      .format-btn {
+        padding: 4px 6px;
+        font-size: 12px;
+        min-width: 30px;
+      }
+
+      .color-picker-container {
+        .color-input {
+          width: 30px;
+          height: 22px;
+        }
+
+        .color-label {
+          display: none;
+        }
+      }
+    }
+
+    .rich-editor-content {
+      min-height: 200px;
+      padding: 10px;
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .rich-editor-toolbar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+
+      .toolbar-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+// Print Styles
+@media print {
+  .rich-editor-toolbar {
+    display: none;
+  }
+
+  .rich-editor-content {
+    border: none;
+    box-shadow: none;
+  }
+}

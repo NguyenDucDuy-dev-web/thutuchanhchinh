@@ -40,7 +40,7 @@ const AdminLayout = () => {
 
   return (
     <>
-      <main className={`Home-admin-page ${isMobile && showMobileSidebar ? 'sidebar-overlay' : ''}`}>
+      <main className={`Home-admin-page`}>
         <Container fluid className="Homepage_container p-0">
           <div className="d-flex">
             <Sidebar 

@@ -137,7 +137,7 @@ const ModalEditNews = ({ show, onHide, news, onFetchNews }) => {
   };
   return (
     <>
-      <Modal show={show} onHide={onHide}>
+      <Modal show={show} onHide={onHide} style={{ fontFamily: 'Roboto, sans-serif' }}>
         <Modal.Header closeButton>
           <Modal.Title>Chỉnh sửa tin tức</Modal.Title>
         </Modal.Header>

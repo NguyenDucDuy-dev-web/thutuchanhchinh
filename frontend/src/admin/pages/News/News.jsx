@@ -9,22 +9,33 @@ import BreadcrumbComponent from "../../../components/common/Breadcrumb/Breadcrum
 const News = () => {
   const [news, setNews] = useState([]);
   const [searchKeyword, setSearchKeyWord] = useState("");
-
+  const [loading, setLoading] = useState(true);
   const filteredData = news.filter((item) =>
     item.title?.toLowerCase().includes(searchKeyword.toLowerCase())
   );
   const fetchNews = async () => {
-    const res = await fetch(apiUrl + "news", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token()}`,
-      },
-    });
+    try {
+      setLoading(true);
+      const res = await fetch(apiUrl + "news", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${token()}`,
+        },
+      });
 
-    const result = await res.json();
-    setNews(result.data);
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+
+      const result = await res.json();
+      setNews(result.data);
+    } catch (error) {
+      console.error("Lỗi khi tải danh sách tin tức:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -56,7 +67,16 @@ const News = () => {
                 />
               </div>
               <div className="table-content">
-                <TableNews data={filteredData} onFetchNews={fetchNews} />
+                {loading ? (
+                  <div className="text-center py-4">
+                    <div className="spinner-border text-primary" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                    <p className="mt-2 mb-0">Đang tải dữ liệu...</p>
+                  </div>
+                ) : (
+                  <TableNews data={filteredData} onFetchNews={fetchNews} />
+                )}
               </div>
             </div>
           </Col>

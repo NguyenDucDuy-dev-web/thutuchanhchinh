@@ -33,6 +33,7 @@ const ModalPreviewProcedure = ({
       size="xl"
       centered
       className="modal-preview-procedure"
+      style={{ fontFamily: 'Roboto, sans-serif' }}
     >
       <Modal.Header closeButton>
         <Modal.Title>Xem trước mẫu thủ tục</Modal.Title>

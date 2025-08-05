@@ -15,8 +15,15 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('procedure_id');
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
+            $table->foreign('procedure_id')
+                ->references('id')->on('procedures')
+                ->onDelete('restrict');
 
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('set null');
             $table->index('procedure_id');
             $table->index('user_id');
         });

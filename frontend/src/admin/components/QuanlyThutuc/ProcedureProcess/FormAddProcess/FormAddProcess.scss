@@ -1,0 +1,76 @@
+@import "../../../../../assets/stylecommon/color.scss";
+
+.form-control.is-invalid {
+  border-radius: 5px !important;
+}
+
+.invalid-feedback {
+  margin-bottom: 0;
+  font-size: 0.85rem;
+}
+
+.addloading {
+  font-size: 0.9rem;
+  color: $white;
+}
+.deleteAdd-box {
+  display: flex;
+  justify-content: flex-end;
+  .deleteAdd {
+    display: flex;
+    gap: 0.5rem !important;
+    width: 50%;
+    padding-top: 0 !important;
+    border-top: none !important;
+    .btn-deleteSteps {
+      padding: 0rem 0.5rem;
+      border-radius: 5px !important;
+      color: $white;
+      background: $red;
+      flex: 1;
+      font-size: 0.8rem;
+      height: auto;
+    }
+
+    .btn-addSteps {
+      padding: 0.2rem 0.2rem;
+      border-radius: 5px !important;
+      border: 1px solid $dark;
+      flex: 1;
+      font-size: 0.8rem;
+      height: auto;
+      border: none;
+      color: $blue;
+    }
+  }
+}
+
+.btn-group {
+  .btn-reset {
+    background: $white;
+    border: 2px solid $blue;
+    border-radius: 5px;
+    i {
+      font-size: 0.9rem;
+      color: $blue;
+      font-weight: 500;
+    }
+    .reset {
+      font-size: 0.9rem;
+    }
+  }
+
+  .btn-add {
+    background: $blue;
+    border: 2px solid $blue;
+    border-radius: 5px;
+    i {
+      font-size: 0.9rem;
+      color: $white;
+    }
+    .add {
+      font-size: 0.9rem;
+      color: $white;
+    }
+  }
+}

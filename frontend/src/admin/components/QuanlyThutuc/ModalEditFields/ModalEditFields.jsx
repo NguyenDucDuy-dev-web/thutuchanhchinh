@@ -107,7 +107,7 @@ const ModalEditFields = ({ show, onHide, field, onFieldUpdated }) => {
   };
 
   return (
-    <Modal show={show} onHide={onHide}>
+    <Modal show={show} onHide={onHide} style={{ fontFamily: 'Roboto, sans-serif' }}>
       <Modal.Header closeButton>
         <Modal.Title>Chỉnh sửa trường dữ liệu cần thiết</Modal.Title>
       </Modal.Header>

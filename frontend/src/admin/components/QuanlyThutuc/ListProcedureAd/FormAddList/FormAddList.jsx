@@ -4,20 +4,18 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { apiUrl, token } from "../../../../../components/common/Http";
 import "./FormAddList.scss";
-const FormAddList = ({ fetchProcedures, formTemplates }) => {
+const FormAddList = ({ fetchProcedures, formTemplates, procedureProcess }) => {
   const {
-     register,
-     handleSubmit,
-     watch,
-     reset,
-     setValue,
-     formState: { errors, touchedFields, isSubmitted },
-   } = useForm({
-     mode: "onTouched",
-   });
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    setValue,
+    formState: { errors, touchedFields, isSubmitted },
+  } = useForm({
+    mode: "onTouched",
+  });
   const [loading, setLoading] = useState(false);
-
-  
 
   const [fileName, setfileName] = useState("");
   const [uploadedImage, setUploadedImage] = useState(null);
@@ -279,6 +277,32 @@ const FormAddList = ({ fetchProcedures, formTemplates }) => {
               {errors.format && (touchedFields.format || isSubmitted) && (
                 <p className="invalid-feedback">{errors.format?.message}</p>
               )}
+            </div>
+
+            <label htmlFor="process_id">Chọn quy trình xử lý:</label>
+            <div className="input-group">
+              <select
+                {...register("process_id", {
+                  required: "Vui lòng chọn quy trình xử lý",
+                })}
+                id="process_id"
+                className={`form-control ${
+                  errors.process_id && "is-invalid"
+                }`}
+              >
+                <option value="">-- Chọn quy trình xử lý --</option>
+                {procedureProcess.map((procedureProcess) => (
+                  <option key={procedureProcess.id} value={procedureProcess.id}>
+                    {procedureProcess.name}
+                  </option>
+                ))}
+              </select>
+              {errors.process_id &&
+                (touchedFields.process_id || isSubmitted) && (
+                  <p className="invalid-feedback">
+                    {errors.process_id?.message}
+                  </p>
+                )}
             </div>
 
             <label htmlFor="form_template_id">Chọn mẫu thủ tục:</label>

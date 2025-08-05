@@ -1,0 +1,13 @@
+@import "../../../assets/stylecommon/color.scss";
+
+.table-controls{
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    .table-search{
+        display: flex;
+        justify-content: start;
+        input{
+            width: 100%;
+        }
+    }
+}

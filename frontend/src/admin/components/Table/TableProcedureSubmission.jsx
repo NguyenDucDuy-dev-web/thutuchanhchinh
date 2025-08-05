@@ -5,8 +5,16 @@ import {
   flexRender,
 } from "@tanstack/react-table";
 import "./TableProcedureSubmission.scss";
+import ModalViewDetailYeuCau from "../QuanlyYeuCau/ModalViewDetailYeuCau/ModalViewDetailYeuCau";
 
 const TableProcedureSubmission = ({ data }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedSubmission, setSelectedSubmission] = useState(null);
+
+  const handleViewDetail = (item) => {
+    setSelectedSubmission(item);
+    setShowModal(true);
+  };
   const columns = [
     {
       header: "STT",
@@ -52,11 +60,11 @@ const TableProcedureSubmission = ({ data }) => {
             onClick={() => handleViewDetail(row.original)}
           ></i>
           <i
-            className="bi bi-check-circle text-success me-1"
+            className="bi bi-file-earmark-check-fill text-success me-1 edit"
             onClick={() => handleApprove(row.original)}
           ></i>
           <i
-            className="bi bi-x-circle text-danger me-1"
+            className="bi bi-file-earmark-x-fill me-1 delete"
             onClick={() => handleReject(row.original)}
           ></i>
         </>
@@ -69,6 +77,7 @@ const TableProcedureSubmission = ({ data }) => {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
   return (
     <>
       <div className="table-responsive-wrapper">
@@ -111,6 +120,12 @@ const TableProcedureSubmission = ({ data }) => {
           </table>
         </div>
       </div>
+
+      <ModalViewDetailYeuCau
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        submission={selectedSubmission}
+      />
     </>
   );
 };

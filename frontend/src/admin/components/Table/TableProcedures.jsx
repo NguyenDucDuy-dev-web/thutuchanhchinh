@@ -8,13 +8,13 @@ import "./TableProcedures.scss";
 import ModalEditList from "../QuanlyThutuc/ListProcedureAd/ModalEditList/ModalEditList";
 import ModalDeleteList from "../QuanlyThutuc/ListProcedureAd/ModalDeleteList/ModalDeleteList";
 import ModalViewDetail from "../QuanlyThutuc/ListProcedureAd/ModalViewDetail/ModalViewDetail";
-// import ModalEditNews from "../QuanlyTintuc/ModalEditNews/ModalEditNews";
 
-const TableProcedures = ({ data, fetchProcedures, formTemplates }) => {
+const TableProcedures = ({ data, fetchProcedures, formTemplates, procedureProcess }) => {
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showDetailModal, setShowDetailModal] = useState(false);
   const [selectedProcedures, setSelectedProcedures] = useState(null);
+
   const handleShowModalDelete = (procedures) => {
     setShowDeleteModal(true);
     setSelectedProcedures(procedures);
@@ -29,6 +29,7 @@ const TableProcedures = ({ data, fetchProcedures, formTemplates }) => {
     setShowModal(true);
     setSelectedProcedures(procedures);
   };
+
   const handleClosemodal = () => {
     setShowModal(false);
     setSelectedProcedures(null);
@@ -56,52 +57,50 @@ const TableProcedures = ({ data, fetchProcedures, formTemplates }) => {
     {
       header: "Tiêu đề",
       accessorKey: "title",
-      size: 200,
+      size: 100,
       cell: ({ getValue }) => (
-        <div className="text-cell" title={getValue()}>
-          {truncateText(getValue(), 20)}
+        <div className="text-cell title-cell" title={getValue()}>
+          {truncateText(getValue(), 30)}
         </div>
       ),
     },
     {
       header: "Mô tả",
       accessorKey: "short_desc",
-      size: 200,
+      size: 150,
       cell: ({ getValue }) => (
-        <div className="text-cell" title={getValue()}>
-          {truncateText(getValue(), 60)}
+        <div className="text-cell short_desc-cell" title={getValue()}>
+          {truncateText(getValue(), 40)}
         </div>
       ),
     },
     {
       header: "Nội dung",
       accessorKey: "content",
-      size: 250,
+      size: 200,
       cell: ({ getValue }) => (
         <div className="text-cell content-cell" title={getValue()}>
-          {truncateText(getValue(), 80)}
+          {truncateText(getValue(), 25)}
         </div>
       ),
     },
-
     {
       header: "Phòng",
       accessorKey: "room",
-      size: 50,
+      size: 100,
       cell: ({ getValue }) => (
-        <div className="text-cell content-cell" title={getValue()}>
-          {truncateText(getValue(), 80)}
+        <div className="text-cell department-cell" title={getValue()}>
+          {truncateText(getValue(), 20)}
         </div>
       ),
     },
-
     {
       header: "Thời gian",
       accessorKey: "time",
-      size: 50,
+      size: 100,
       cell: ({ getValue }) => (
-        <div className="text-cell content-cell" title={getValue()}>
-          {truncateText(getValue(), 80)}
+        <div className="text-cell time-cell" title={getValue()}>
+          {truncateText(getValue(), 15)}
         </div>
       ),
     },
@@ -114,7 +113,7 @@ const TableProcedures = ({ data, fetchProcedures, formTemplates }) => {
           {getValue() ? (
             <img
               src={`http://localhost:8000/storage/${getValue()}`}
-              alt="News"
+              alt="Procedure"
               className="news-thumbnail"
               onError={(e) => {
                 e.target.style.display = "none";
@@ -129,7 +128,7 @@ const TableProcedures = ({ data, fetchProcedures, formTemplates }) => {
     {
       header: "Loại",
       accessorKey: "type",
-      size: 50,
+      size: 120,
       cell: ({ getValue }) =>
         getValue() === 0 ? (
           <span className="actiontype">Thủ tục hành chính công</span>
@@ -140,7 +139,7 @@ const TableProcedures = ({ data, fetchProcedures, formTemplates }) => {
     {
       header: "Hình thức",
       accessorKey: "format",
-      size: 50,
+      size: 100,
       cell: ({ getValue }) =>
         getValue() === 1 ? (
           <span className="badge bg-primary action">Trực tuyến</span>
@@ -148,34 +147,42 @@ const TableProcedures = ({ data, fetchProcedures, formTemplates }) => {
           <span className="badge bg-danger noaction">Trực tiếp</span>
         ),
     },
-
+    {
+      header: "Quy trình",
+      accessorFn: (row) => row.process?.name ?? "",
+      size: 120,
+      cell: ({ getValue }) => (
+        <div className="text-cell" title={getValue()}>
+          {truncateText(getValue(), 20)}
+        </div>
+      ),
+    },
     {
       header: "Mẫu thủ tục",
       accessorFn: (row) => row.form_template?.name ?? "",
-      size: 50,
+      size: 120,
       cell: ({ getValue }) => (
-        <div className="text-cell content-cell" title={getValue()}>
-          {truncateText(getValue(), 80)}
+        <div className="text-cell" title={getValue()}>
+          {truncateText(getValue(), 20)}
         </div>
       ),
     },
     {
       header: "Chức năng",
       id: "actions",
-      size: 100,
+      size: 120,
       cell: ({ row }) => (
         <div className="action-buttons">
           <i
             className="bi bi-eye-fill text-primary me-1 detail"
             onClick={() => handleViewDetail(row.original)}
           ></i>
-
           <i
-            className="bi bi-person-fill-gear text-success me-1 edit"
+            className="bi bi-file-earmark-code-fill text-success me-1 edit"
             onClick={() => handleShowmodal(row.original)}
           ></i>
           <i
-            className="bi bi-person-fill-x text-danger me-1 delete"
+            className="bi bi-file-earmark-x-fill text-danger me-1 delete"
             onClick={() => handleShowModalDelete(row.original)}
           ></i>
         </div>
@@ -188,16 +195,17 @@ const TableProcedures = ({ data, fetchProcedures, formTemplates }) => {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
   return (
     <>
       <div className="table-responsive-wrapper">
         <div className="desktop-table">
-          <table className="user-table table table-bordered table-hover">
+          <table className="procedure-table table table-bordered table-hover">
             <thead className="table-light">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
-                    <th key={header.id} className="user-table-header">
+                    <th key={header.id} className="procedure-table-header">
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
@@ -211,7 +219,7 @@ const TableProcedures = ({ data, fetchProcedures, formTemplates }) => {
               {table.getRowModel().rows.map((row) => (
                 <tr key={row.id}>
                   {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className="user-table-cell">
+                    <td key={cell.id} className="procedure-table-cell">
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
@@ -224,50 +232,68 @@ const TableProcedures = ({ data, fetchProcedures, formTemplates }) => {
           </table>
         </div>
         <div className="mobile-cards">
-          {data.map((user, index) => (
-            <div key={index} className="user-card">
+          {data.map((procedure, index) => (
+            <div key={index} className="procedure-card">
               <div className="card-header">
-                <div className="user-info">
-                  <h6 className="user-name">{user.name}</h6>
-                  <span className="user-index">#{index + 1}</span>
+                <div className="procedure-info">
+                  <h6 className="procedure-title">
+                    {truncateText(procedure.title, 50)}
+                  </h6>
+                  <span className="procedure-index">#{index + 1}</span>
                 </div>
-                <div className="user-status">
-                  {user.status === 1 ? (
-                    <span className="badge bg-primary action">Hoạt động</span>
+                <div className="procedure-status">
+                  {procedure.format === 1 ? (
+                    <span className="badge bg-primary action">Trực tuyến</span>
                   ) : (
-                    <span className="badge bg-danger noaction">
-                      Không hoạt động
-                    </span>
+                    <span className="badge bg-danger noaction">Trực tiếp</span>
                   )}
                 </div>
               </div>
               <div className="card-body">
-                <div className="user-email">
-                  <i className="bi bi-envelope me-2"></i>
-                  <span>{user.email}</span>
+                <div className="procedure-description">
+                  <i className="bi bi-file-text me-2"></i>
+                  <span>{truncateText(procedure.short_desc, 100)}</span>
+                </div>
+                <div className="procedure-room">
+                  <i className="bi bi-building me-2"></i>
+                  <span>{procedure.room}</span>
+                </div>
+                <div className="procedure-time">
+                  <i className="bi bi-clock me-2"></i>
+                  <span>{procedure.time}</span>
                 </div>
               </div>
               <div className="card-actions">
-                <button className="btn btn-sm btn-outline-primary detail">
+                <button
+                  className="btn btn-sm btn-outline-primary detail"
+                  onClick={() => handleViewDetail(procedure)}
+                >
                   <i className="bi bi-eye-fill me-1"></i>Chi tiết
                 </button>
-                <button className="btn btn-sm btn-outline-success edit">
-                  <i className="bi bi-person-fill-gear me-1"></i>
-                  Sửa
+                <button
+                  className="btn btn-sm btn-outline-success edit"
+                  onClick={() => handleShowmodal(procedure)}
+                >
+                  <i className="bi bi-file-earmark-code-fill me-1"></i>Sửa
                 </button>
-                <button className="btn btn-sm btn-outline-danger delete">
-                  <i className="bi bi-person-fill-x me-1"></i>Xóa
+                <button
+                  className="btn btn-sm btn-outline-danger delete"
+                  onClick={() => handleShowModalDelete(procedure)}
+                >
+                  <i className="bi bi-file-earmark-x-fill me-1"></i>Xóa
                 </button>
               </div>
             </div>
           ))}
         </div>
       </div>
+
       <ModalViewDetail
         show={showDetailModal}
         onHide={() => setShowDetailModal(false)}
         procedures={selectedProcedures}
         formTemplates={formTemplates}
+        procedureProcess = {procedureProcess}
       />
 
       <ModalEditList
@@ -276,6 +302,7 @@ const TableProcedures = ({ data, fetchProcedures, formTemplates }) => {
         procedures={selectedProcedures}
         onFetchProcedures={fetchProcedures}
         formTemplates={formTemplates}
+        procedureProcess = {procedureProcess}
       />
 
       <ModalDeleteList

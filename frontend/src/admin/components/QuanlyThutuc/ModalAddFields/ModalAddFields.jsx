@@ -89,7 +89,7 @@ const ModalAddFields = ({ show, onHide, onFieldAdded }) => {
   };
 
   return (
-    <Modal show={show} onHide={onHide}>
+    <Modal show={show} onHide={onHide} style={{ fontFamily: 'Roboto, sans-serif' }}>
       <Modal.Header closeButton>
         <Modal.Title>Thêm trường dữ liệu cần thiết</Modal.Title>
       </Modal.Header>

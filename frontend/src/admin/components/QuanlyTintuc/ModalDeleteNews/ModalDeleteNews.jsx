@@ -33,7 +33,7 @@ const ModalDeleteNews = ({ show, onHide, news, onFetchNews }) => {
     }
   };
   return (
-    <Modal show={show} onHide={onHide} dialogClassName="top-modal">
+    <Modal show={show} onHide={onHide} dialogClassName="top-modal" style={{ fontFamily: 'Roboto, sans-serif' }}>
       <Modal.Header closeButton>
         <Modal.Title>Xác nhận xóa</Modal.Title>
       </Modal.Header>

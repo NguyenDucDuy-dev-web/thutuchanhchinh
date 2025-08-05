@@ -41,10 +41,10 @@ export const menuData = [
     submenu: [
       {
         id: 31,
-        title: "Danh sách thủ tục",
-        icon: "bi bi-list-ul",
-        path: "/homeadmin/listprocedures",
-        pageTitle: "Danh sách thủ tục",
+        title: "Quy trình xử lý",
+        icon: "bi bi-graph-up-arrow",
+        path: "/homeadmin/procedureprocess",
+        pageTitle: "Quy trình xử lý",
       },
       {
         id: 32,
@@ -69,10 +69,10 @@ export const menuData = [
       },
       {
         id: 35,
-        title: "Danh sách yêu cầu",
+        title: "Danh sách thủ tục",
         icon: "bi bi-list-ul",
-        path: "/homeadmin/listproceduresubmission",
-        pageTitle: "Danh sách yêu cầu thủ tục",
+        path: "/homeadmin/listprocedures",
+        pageTitle: "Danh sách thủ tục",
       },
     ],
   },
@@ -87,6 +87,43 @@ export const menuData = [
         icon: "bi bi-file-richtext-fill",
         path: "/homeadmin/news",
         pageTitle: "Quản lý tin tức",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Quản lý yêu cầu",
+    icon: "bi bi-newspaper",
+    submenu: [
+      {
+        id: 42,
+        title: "Danh sách yêu cầu",
+        icon: "bi bi-list-ul",
+        path: "/homeadmin/listproceduresubmission",
+        pageTitle: "Danh sách yêu cầu thủ tục",
+      },
+    ],
+  },
+
+  {
+    id: 6,
+    title: "Quản lý mail",
+    icon: "bi bi-newspaper",
+    submenu: [
+      {
+        id: 42,
+        title: "Quản lý gửi mail",
+        icon: "bi bi-list-ul",
+        path: "/homeadmin/sendemail",
+        pageTitle: "Danh sách gửi mail",
+      },
+
+      {
+        id: 43,
+        title: "Danh sách mẫu mail",
+        icon: "bi bi-list-ul",
+        path: "/homeadmin/samplemail",
+        pageTitle: "Danh sách gửi mail",
       },
     ],
   },
@@ -108,7 +145,7 @@ export const findMenuByPath = (path) => {
 
 export const generateBreadcrumb = (pathname) => {
   const menuInfo = findMenuByPath(pathname);
-  
+
   if (!menuInfo) {
     return {
       title: "Trang không tìm thấy",

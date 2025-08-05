@@ -7,11 +7,14 @@ import {
 import "./TableNews.scss";
 import ModalEditNews from "../QuanlyTintuc/ModalEditNews/ModalEditNews";
 import ModalDeleteNews from "../QuanlyTintuc/ModalDeleteNews/ModalDeleteNews";
+import ModalViewDetailNews from "../QuanlyTintuc/ModalViewDetailNews/ModalViewDetailNews";
 
 const TableNews = ({ data, onFetchNews }) => {
   const [showModal, setShowModal] = useState(false);
+  const [showDetailModal, setShowDetailModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedNews, setSelectedNews] = useState(null);
+
   const handleShowModalDelete = (news) => {
     setShowDeleteModal(true);
     setSelectedNews(news);
@@ -26,9 +29,15 @@ const TableNews = ({ data, onFetchNews }) => {
     setShowModal(true);
     setSelectedNews(news);
   };
+
   const handleClosemodal = () => {
     setShowModal(false);
     setSelectedNews(null);
+  };
+
+  const handleViewDetail = (news) => {
+    setSelectedNews(news);
+    setShowDetailModal(true);
   };
 
   const truncateText = (text, maxLength) => {
@@ -50,8 +59,8 @@ const TableNews = ({ data, onFetchNews }) => {
       accessorKey: "title",
       size: 200,
       cell: ({ getValue }) => (
-        <div className="text-cell" title={getValue()}>
-          {truncateText(getValue(), 20)}
+        <div className="text-cell title-cell" title={getValue()}>
+          {truncateText(getValue(), 30)}
         </div>
       ),
     },
@@ -70,18 +79,18 @@ const TableNews = ({ data, onFetchNews }) => {
       accessorKey: "short_desc",
       size: 200,
       cell: ({ getValue }) => (
-        <div className="text-cell" title={getValue()}>
-          {truncateText(getValue(), 60)}
+        <div className="text-cell short_desc-cell" title={getValue()}>
+          {truncateText(getValue(), 40)}
         </div>
       ),
     },
     {
       header: "Nội dung",
       accessorKey: "content",
-      size: 250,
+      size: 150,
       cell: ({ getValue }) => (
         <div className="text-cell content-cell" title={getValue()}>
-          {truncateText(getValue(), 80)}
+          {truncateText(getValue(), 25)}
         </div>
       ),
     },
@@ -131,14 +140,16 @@ const TableNews = ({ data, onFetchNews }) => {
       size: 120,
       cell: ({ row }) => (
         <div className="action-buttons">
-          <i className="bi bi-eye-fill text-primary me-1 detail"></i>
-
           <i
-            className="bi bi-person-fill-gear text-success me-1 edit"
+            className="bi bi-eye-fill text-primary me-1 detail"
+            onClick={() => handleViewDetail(row.original)}
+          ></i>
+          <i
+            className="bi bi-file-earmark-check-fill text-success me-1 edit"
             onClick={() => handleShowmodal(row.original)}
           ></i>
           <i
-            className="bi bi-person-fill-x text-danger me-1 delete"
+            className="bi bi-file-earmark-x-fill text-danger me-1 delete"
             onClick={() => handleShowModalDelete(row.original)}
           ></i>
         </div>
@@ -151,16 +162,17 @@ const TableNews = ({ data, onFetchNews }) => {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
   return (
     <>
       <div className="table-responsive-wrapper">
         <div className="desktop-table">
-          <table className="user-table table table-bordered table-hover">
+          <table className="news-table table table-bordered table-hover">
             <thead className="table-light">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
-                    <th key={header.id} className="user-table-header">
+                    <th key={header.id} className="news-table-header">
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
@@ -174,7 +186,7 @@ const TableNews = ({ data, onFetchNews }) => {
               {table.getRowModel().rows.map((row) => (
                 <tr key={row.id}>
                   {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className="user-table-cell">
+                    <td key={cell.id} className="news-table-cell">
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
@@ -187,45 +199,63 @@ const TableNews = ({ data, onFetchNews }) => {
           </table>
         </div>
         <div className="mobile-cards">
-          {data.map((user, index) => (
-            <div key={index} className="user-card">
+          {data.map((news, index) => (
+            <div key={index} className="news-card">
               <div className="card-header">
-                <div className="user-info">
-                  <h6 className="user-name">{user.name}</h6>
-                  <span className="user-index">#{index + 1}</span>
+                <div className="news-info">
+                  <h6 className="news-title">{truncateText(news.title, 50)}</h6>
+                  <span className="news-index">#{index + 1}</span>
                 </div>
-                <div className="user-status">
-                  {user.status === 1 ? (
-                    <span className="badge bg-primary action">Hoạt động</span>
+                <div className="news-status">
+                  {news.status === 1 ? (
+                    <span className="badge bg-primary action">Nổi bật</span>
                   ) : (
                     <span className="badge bg-danger noaction">
-                      Không hoạt động
+                      Bình thường
                     </span>
                   )}
                 </div>
               </div>
               <div className="card-body">
-                <div className="user-email">
-                  <i className="bi bi-envelope me-2"></i>
-                  <span>{user.email}</span>
+                <div className="news-description">
+                  <i className="bi bi-file-text me-2"></i>
+                  <span>{truncateText(news.short_desc, 100)}</span>
+                </div>
+                <div className="news-department">
+                  <i className="bi bi-building me-2"></i>
+                  <span>{news.department}</span>
                 </div>
               </div>
               <div className="card-actions">
                 <button className="btn btn-sm btn-outline-primary detail">
-                  <i className="bi bi-eye-fill me-1"></i>Chi tiết
+                  <i
+                    className="bi bi-eye-fill me-1"
+                    onClick={() => handleViewDetail(news)}
+                  ></i>
+                  Chi tiết
                 </button>
-                <button className="btn btn-sm btn-outline-success edit">
-                  <i className="bi bi-person-fill-gear me-1"></i>
-                  Sửa
+                <button
+                  className="btn btn-sm btn-outline-success edit"
+                  onClick={() => handleShowmodal(news)}
+                >
+                  <i className="bi bi-file-earmark-check-fill me-1"></i>Sửa
                 </button>
-                <button className="btn btn-sm btn-outline-danger delete">
-                  <i className="bi bi-person-fill-x me-1"></i>Xóa
+                <button
+                  className="btn btn-sm btn-outline-danger delete"
+                  onClick={() => handleShowModalDelete(news)}
+                >
+                  <i className="bi bi-file-earmark-x-fill me-1"></i>Xóa
                 </button>
               </div>
             </div>
           ))}
         </div>
       </div>
+      <ModalViewDetailNews
+        show={showDetailModal}
+        onHide={() => setShowDetailModal(false)}
+        news={selectedNews}
+      />
 
       <ModalEditNews
         show={showModal}

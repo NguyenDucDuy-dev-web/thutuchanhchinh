@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import ModalPreviewWithData from "../ModalPreviewWithData/ModalPreviewWithData";
 import { apiUrl, token } from "../../../../components/common/Http";
 import { toast } from "react-toastify";
+import "./ModalFillForm.scss";
 
 const ModalFillForm = ({
   show,
@@ -156,9 +157,9 @@ const ModalFillForm = ({
 
   const onSubmit = async (data) => {
     const fieldsPayload = normalizedFields.map((field) => ({
-      field_id: field.id, //  Bắt buộc
-      field_name: field.name, // (nếu backend cần)
-      value: data[field.name] ?? "", // Lấy giá trị người dùng nhập
+      field_id: field.id, 
+      field_name: field.name, 
+      value: data[field.name] ?? "", 
     }));
 
     const payload = {
@@ -194,7 +195,7 @@ const ModalFillForm = ({
 
   return (
     <>
-      <Modal show={show} onHide={onHide} centered>
+      <Modal show={show} onHide={onHide} centered className="modal-fill-form">
         <Modal.Header closeButton>
           <Modal.Title>Điền thông tin</Modal.Title>
         </Modal.Header>
@@ -205,9 +206,9 @@ const ModalFillForm = ({
             ) : (
               <p className="text-muted">Không có trường nào để hiển thị.</p>
             )}
-            <div className="d-flex justify-content-between align-items-center mt-4">
+            <div className="modal-buttons">
               <Button
-                variant="secondary"
+                className="btn-preview"
                 onClick={handlePreview}
                 disabled={loading}
               >
@@ -219,7 +220,7 @@ const ModalFillForm = ({
                   "Xem trước"
                 )}
               </Button>
-              <Button variant="primary" type="submit">
+              <Button className="btn-submit" type="submit"  disabled={loading}>
                 Gửi
               </Button>
             </div>

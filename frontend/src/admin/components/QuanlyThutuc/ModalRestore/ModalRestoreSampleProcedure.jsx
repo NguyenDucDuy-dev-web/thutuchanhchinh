@@ -32,7 +32,7 @@ const ModalRestoreSampleProcedure = ({show, onHide, template, onRestore}) => {
     }
   };
   return (
-    <Modal show={show} onHide={onHide} dialogClassName="top-modal">
+    <Modal show={show} onHide={onHide} dialogClassName="top-modal" style={{ fontFamily: 'Roboto, sans-serif' }}>
       <Modal.Header closeButton>
         <Modal.Title>Xác nhận khôi phục</Modal.Title>
       </Modal.Header>

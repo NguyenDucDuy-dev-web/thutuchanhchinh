@@ -1,9 +1,6 @@
 @import "../../../assets/stylecommon/color.scss";
 
-.news-table-container {
-  background: $white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.table-responsive-wrapper {
   overflow: hidden;
 }
 
@@ -11,15 +8,17 @@
   width: 100%;
   margin-bottom: 0;
   font-size: 14px;
+  border-collapse: collapse;
 }
 
 .news-table th {
-  color: $white;
+  color: $dark;
   font-weight: 600;
   text-align: center;
   padding: 12px 8px;
-  border: none;
-  position: sticky;
+  vertical-align: middle;
+  white-space: nowrap;
+  // position: sticky;
   top: 0;
   z-index: 10;
 }
@@ -28,6 +27,7 @@
   padding: 10px 8px;
   vertical-align: middle;
   border-bottom: 1px solid #e9ecef;
+  text-align: center;
 }
 
 .news-table tbody tr:hover {
@@ -39,26 +39,60 @@
   line-height: 1.4;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 2.8em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.title-cell {
+  text-align: left;
+  max-width: 200px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.short_desc-cell-cell {
+  text-align: left;
+  max-width: 200px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.content-cell {
+  text-align: left;
+  color: $dark;
+  max-width: 150px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: 1.4;
 }
 
 .slug-cell {
   font-family: "Roboto", sans-serif;
   font-size: 12px;
-  color: $gray;
+  color: $dark;
   background-color: #f8f9fa;
   padding: 4px 8px;
   border-radius: 4px;
   display: inline-block;
 }
 
-.content-cell {
-  text-align: justify;
-  color: $gray;
-}
-
 .department-cell {
   font-weight: 500;
-  color: $gray;
+  color: $dark;
+  text-align: center;
+  max-width: 120px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .image-cell {
@@ -115,11 +149,27 @@
   font-size: 12px;
 }
 
-.table-responsive-wrapper {
-  overflow-x: auto;
-  max-width: 100%;
+.action-buttons i {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+.detail {
+  color: $blue !important;
 }
 
+.edit {
+  color: $green !important;
+}
+
+.delete {
+  color: $red !important;
+}
 .desktop-table {
   display: block;
 }
@@ -169,49 +219,74 @@
     border: 1px solid #e9ecef;
   }
 
-  .news-card-header {
+  .card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 12px;
   }
 
+  .news-info {
+    flex: 1;
+  }
+
   .news-title {
     font-size: 16px;
     font-weight: 600;
     color: #495057;
-    margin: 0;
+    margin: 0 0 4px 0;
     line-height: 1.3;
   }
 
-  .news-meta {
-    margin-top: 8px;
+  .news-index {
     font-size: 12px;
     color: #6c757d;
+    font-weight: 400;
   }
 
-  .news-content {
+  .news-status {
+    flex-shrink: 0;
+  }
+
+  .card-body {
     margin-bottom: 12px;
   }
 
-  .news-desc {
-    color: #495057;
-    line-height: 1.4;
+  .news-description {
+    display: flex;
+    align-items: flex-start;
     margin-bottom: 8px;
   }
 
-  .news-department {
-    font-weight: 500;
-    color: #495057;
+  .news-description i {
+    color: #6c757d;
+    margin-top: 2px;
   }
 
-  .news-actions {
+  .news-description span {
+    color: #495057;
+    line-height: 1.4;
+    font-size: 14px;
+  }
+
+  .news-department {
+    display: flex;
+    align-items: center;
+    color: #495057;
+    font-size: 14px;
+  }
+
+  .news-department i {
+    color: #6c757d;
+  }
+
+  .card-actions {
     display: flex;
     gap: 8px;
     justify-content: flex-end;
   }
 
-  .news-actions .btn {
+  .card-actions .btn {
     padding: 6px 12px;
     font-size: 12px;
   }
